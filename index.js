@@ -1,6 +1,4 @@
-// index.js (ESM)
-// Make sure package.json has: { "type": "module" }
-
+// index.js
 import express from "express";
 import cors from "cors";
 import axios from "axios";
@@ -10,15 +8,13 @@ import path from "path";
 import { fileURLToPath } from "url";
 
 // -----------------------------
-// .env loading (optional on Render)
+// Resolve __dirname for ES modules & load .env
 // -----------------------------
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
-// Load .env if present (Render lets you set env vars in dashboard)
 dotenv.config({ path: path.join(__dirname, ".env") });
 
-// Diagnostics (safe to keep; remove later if you want)
+// Basic diagnostics
 console.log("process.cwd():", process.cwd());
 console.log("Looking for .env at:", path.join(__dirname, ".env"), "exists:", fs.existsSync(path.join(__dirname, ".env")));
 console.log("OPENAI_API_KEY:", process.env.OPENAI_API_KEY ? "✅ set" : "—");
@@ -227,11 +223,10 @@ async function askPerplexity(prompt) {
 }
 
 // -----------------------------
-// AI Directory (from file with fallback)
+// AI Directory (file + fallback) with BOM stripping
 // -----------------------------
 const DIR_FILE = path.join(__dirname, "data", "ai-directory.json");
 
-// Small built-in fallback so /ai-directory never 404s just because the file is missing
 const FALLBACK_DIRECTORY = [
   {
     name: "OpenAI ChatGPT",
@@ -268,11 +263,11 @@ function normalizeCompaniesShape(raw) {
 
 function loadDirectory() {
   try {
-    if (!fs.existsSync(DIR_FILE)) {
-      return FALLBACK_DIRECTORY;
-    }
-    const raw = JSON.parse(fs.readFileSync(DIR_FILE, "utf8"));
-    const items = normalizeCompaniesShape(raw);
+    if (!fs.existsSync(DIR_FILE)) return FALLBACK_DIRECTORY;
+    const rawText = fs.readFileSync(DIR_FILE, "utf8");
+    const noBom = rawText.replace(/^\uFEFF/, ""); // strip UTF-8 BOM
+    const parsed = JSON.parse(noBom);
+    const items = normalizeCompaniesShape(parsed);
     return items.length ? items : FALLBACK_DIRECTORY;
   } catch (e) {
     console.error("ai-directory read/parse error:", e.message);
@@ -285,7 +280,7 @@ function loadDirectory() {
 // -----------------------------
 app.get("/", (_req, res) => {
   res.type("text/plain").send(
-    `Artiligenz backend is running.
+`Artiligenz backend is running.
 GET  /health
 GET  /ai-directory
 GET  /ai-directory/search?q=term
