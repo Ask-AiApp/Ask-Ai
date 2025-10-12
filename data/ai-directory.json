@@ -1,0 +1,27 @@
+{{
+  "ok": true,
+  "count": 3,
+  "items": [
+    {
+      "name": "OpenAI ChatGPT",
+      "category": "General",
+      "summary": "Conversational general-purpose AI.",
+      "website": "https://chat.openai.com/",
+      "use_cases": ["Q&A", "Writing", "Coding"]
+    },
+    {
+      "name": "Anthropic Claude",
+      "category": "General",
+      "summary": "Helpful, harmless and honest assistant.",
+      "website": "https://claude.ai/",
+      "use_cases": ["Q&A", "Summaries", "Docs"]
+    },
+    {
+      "name": "Google Gemini",
+      "category": "General",
+      "summary": "Multimodal large language model by Google.",
+      "website": "https://gemini.google.com/",
+      "use_cases": ["Search", "Q&A", "Images"]
+    }
+  ]
+}

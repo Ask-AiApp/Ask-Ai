@@ -1,13 +1,29 @@
 {
   "name": "ask-ai-backend",
   "version": "1.0.0",
+  "description": "Backend for Artiligenz / Ask-Ai app – connects multiple AI providers and serves the AI Directory.",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "dev": "node index.js",
     "start": "node index.js"
   },
   "dependencies": {
-    "express": "^4.19.2",
-    "cors": "^2.8.5"
-  }
+    "axios": "^1.7.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  },
+  "engines": {
+    "node": ">=18.x"
+  },
+  "keywords": [
+    "AI",
+    "Express",
+    "Ask-Ai",
+    "Artiligenz",
+    "Render",
+    "API"
+  ],
+  "author": "Artiligenz",
+  "license": "MIT"
 }
