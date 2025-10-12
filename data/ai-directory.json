@@ -2,22 +2,345 @@
   {
     "name": "OpenAI ChatGPT",
     "category": "General / Chat",
-    "summary": "Conversational AI by OpenAI.",
+    "summary": "Conversational assistant by OpenAI, powered by GPT-4o/mini.",
     "website": "https://chat.openai.com/",
-    "use_cases": ["Q&A", "writing", "coding"]
+    "use_cases": ["Q&A", "writing", "coding", "learning"],
+    "logo": ""
+  },
+  {
+    "name": "OpenAI Sora",
+    "category": "Video Generation",
+    "summary": "Text-to-video model for photorealistic and cinematic video.",
+    "website": "https://openai.com/sora",
+    "use_cases": ["ads", "storyboards", "concept videos", "short films"],
+    "logo": ""
   },
   {
     "name": "Anthropic Claude",
     "category": "General / Chat",
-    "summary": "Helpful, harmless, honest assistant.",
+    "summary": "Helpful, honest, harmless assistant with strong reasoning.",
     "website": "https://claude.ai/",
-    "use_cases": ["analysis", "summaries", "ideation"]
+    "use_cases": ["analysis", "summaries", "ideation", "Q&A"],
+    "logo": ""
   },
   {
     "name": "Google Gemini",
     "category": "General / Chat",
-    "summary": "Multimodal AI by Google.",
+    "summary": "Google’s multimodal family (text, image, code).",
     "website": "https://gemini.google.com/",
-    "use_cases": ["search", "images", "Q&A"]
+    "use_cases": ["research", "Q&A", "images", "coding"],
+    "logo": ""
+  },
+  {
+    "name": "Microsoft Copilot",
+    "category": "Productivity / Office",
+    "summary": "AI assistant for Microsoft 365, Bing, and Edge.",
+    "website": "https://copilot.microsoft.com/",
+    "use_cases": ["docs", "email", "slides", "search"],
+    "logo": ""
+  },
+  {
+    "name": "xAI Grok",
+    "category": "Search Q&A",
+    "summary": "Web-connected assistant from xAI.",
+    "website": "https://x.ai/",
+    "use_cases": ["search", "Q&A", "summaries"],
+    "logo": ""
+  },
+  {
+    "name": "Perplexity",
+    "category": "Search Q&A",
+    "summary": "Answer engine with citations and web research.",
+    "website": "https://www.perplexity.ai/",
+    "use_cases": ["web search", "research", "summaries"],
+    "logo": ""
+  },
+  {
+    "name": "Mistral AI",
+    "category": "General / Chat",
+    "summary": "Efficient open models and chat (Mixtral, etc.).",
+    "website": "https://chat.mistral.ai/",
+    "use_cases": ["Q&A", "coding", "lightweight inference"],
+    "logo": ""
+  },
+  {
+    "name": "Cohere",
+    "category": "General / NLP",
+    "summary": "Enterprise text generation and embeddings.",
+    "website": "https://dashboard.cohere.com/playground",
+    "use_cases": ["summaries", "classification", "generation"],
+    "logo": ""
+  },
+  {
+    "name": "Hugging Face Chat",
+    "category": "Open-Source Hub",
+    "summary": "Try open models in the browser.",
+    "website": "https://huggingface.co/chat/",
+    "use_cases": ["model demos", "chat", "open-source"],
+    "logo": ""
+  },
+  {
+    "name": "DeepSeek",
+    "category": "General / Chat",
+    "summary": "Fast, cost-effective chat models.",
+    "website": "https://chat.deepseek.com/",
+    "use_cases": ["Q&A", "coding", "summaries"],
+    "logo": ""
+  },
+  {
+    "name": "Runway",
+    "category": "Video Generation",
+    "summary": "Gen-2 video, image-to-video, and editing.",
+    "website": "https://runwayml.com/",
+    "use_cases": ["ads", "social clips", "concept videos"],
+    "logo": ""
+  },
+  {
+    "name": "Pika",
+    "category": "Video Generation",
+    "summary": "Text-to-video and video editing.",
+    "website": "https://pika.art/",
+    "use_cases": ["shorts", "memes", "visual ideas"],
+    "logo": ""
+  },
+  {
+    "name": "Luma AI",
+    "category": "Video / 3D",
+    "summary": "Text-to-video and 3D capture/NeRF tools.",
+    "website": "https://lumalabs.ai/",
+    "use_cases": ["product shots", "3D capture", "concept videos"],
+    "logo": ""
+  },
+  {
+    "name": "Stability AI (Stable Diffusion)",
+    "category": "Image Generation",
+    "summary": "Open image generation models and tools.",
+    "website": "https://stability.ai/",
+    "use_cases": ["art", "concepts", "design"],
+    "logo": ""
+  },
+  {
+    "name": "Midjourney",
+    "category": "Image Generation",
+    "summary": "High-quality artistic image generation.",
+    "website": "https://www.midjourney.com/",
+    "use_cases": ["concept art", "branding", "illustration"],
+    "logo": ""
+  },
+  {
+    "name": "Leonardo.Ai",
+    "category": "Image Generation",
+    "summary": "Promptable styles and assets for creatives.",
+    "website": "https://leonardo.ai/",
+    "use_cases": ["game assets", "posters", "product shots"],
+    "logo": ""
+  },
+  {
+    "name": "Canva AI",
+    "category": "Design / Productivity",
+    "summary": "Magic tools for design, text, and images.",
+    "website": "https://www.canva.com/",
+    "use_cases": ["social graphics", "presentations", "branding"],
+    "logo": ""
+  },
+  {
+    "name": "Descript",
+    "category": "Audio / Video",
+    "summary": "Edit video like a doc; voice cloning and overdub.",
+    "website": "https://www.descript.com/",
+    "use_cases": ["podcasts", "content editing", "voice"],
+    "logo": ""
+  },
+  {
+    "name": "ElevenLabs",
+    "category": "Audio / Voice",
+    "summary": "Ultra-realistic voice generation and cloning.",
+    "website": "https://elevenlabs.io/",
+    "use_cases": ["voiceover", "dubbing", "accessibility"],
+    "logo": ""
+  },
+  {
+    "name": "Suno",
+    "category": "Audio / Music",
+    "summary": "Text-to-music generation.",
+    "website": "https://suno.com/",
+    "use_cases": ["jingles", "background tracks", "songs"],
+    "logo": ""
+  },
+  {
+    "name": "HeyGen",
+    "category": "Avatars / Video",
+    "summary": "Talking avatars and video localization.",
+    "website": "https://www.heygen.com/",
+    "use_cases": ["explainers", "training", "multilingual videos"],
+    "logo": ""
+  },
+  {
+    "name": "Synthesia",
+    "category": "Avatars / Video",
+    "summary": "AI avatars for corporate training and explainers.",
+    "website": "https://www.synthesia.io/",
+    "use_cases": ["training", "internal comms", "how-to videos"],
+    "logo": ""
+  },
+  {
+    "name": "D-ID",
+    "category": "Avatars / Video",
+    "summary": "Talking photos and presenter videos.",
+    "website": "https://www.d-id.com/",
+    "use_cases": ["presenters", "education", "marketing"],
+    "logo": ""
+  },
+  {
+    "name": "Rephrase.ai",
+    "category": "Avatars / Video",
+    "summary": "Personalized avatar videos at scale.",
+    "website": "https://www.rephrase.ai/",
+    "use_cases": ["personalized outreach", "sales", "marketing"],
+    "logo": ""
+  },
+  {
+    "name": "Notion AI",
+    "category": "Productivity / Docs",
+    "summary": "AI inside Notion for writing and knowledge.",
+    "website": "https://www.notion.so/product/ai",
+    "use_cases": ["notes", "docs", "summaries", "wiki"],
+    "logo": ""
+  },
+  {
+    "name": "Jasper",
+    "category": "Marketing / Writing",
+    "summary": "AI for marketing copy and campaigns.",
+    "website": "https://www.jasper.ai/",
+    "use_cases": ["ads", "blogs", "email copy", "SEO"],
+    "logo": ""
+  },
+  {
+    "name": "Copy.ai",
+    "category": "Marketing / Writing",
+    "summary": "Content generation for growth teams.",
+    "website": "https://www.copy.ai/",
+    "use_cases": ["outreach", "social", "blogging"],
+    "logo": ""
+  },
+  {
+    "name": "Grammarly",
+    "category": "Writing / Editing",
+    "summary": "AI writing assistant and tone suggestions.",
+    "website": "https://www.grammarly.com/",
+    "use_cases": ["editing", "tone", "clarity"],
+    "logo": ""
+  },
+  {
+    "name": "QuillBot",
+    "category": "Writing / Editing",
+    "summary": "Paraphrasing, summarizing, and grammar tools.",
+    "website": "https://quillbot.com/",
+    "use_cases": ["paraphrase", "summarize", "grammar"],
+    "logo": ""
+  },
+  {
+    "name": "Replit AI",
+    "category": "Coding Assistants",
+    "summary": "AI pair programmer inside Replit.",
+    "website": "https://replit.com/",
+    "use_cases": ["coding", "debugging", "learning to code"],
+    "logo": ""
+  },
+  {
+    "name": "GitHub Copilot",
+    "category": "Coding Assistants",
+    "summary": "Code completion and chat inside IDEs.",
+    "website": "https://github.com/features/copilot",
+    "use_cases": ["coding", "tests", "refactor"],
+    "logo": ""
+  },
+  {
+    "name": "Tabnine",
+    "category": "Coding Assistants",
+    "summary": "AI code completions with on-prem options.",
+    "website": "https://www.tabnine.com/",
+    "use_cases": ["coding", "privacy-aware completions"],
+    "logo": ""
+  },
+  {
+    "name": "LangChain",
+    "category": "Dev / Framework",
+    "summary": "Framework for building LLM apps and agents.",
+    "website": "https://www.langchain.com/",
+    "use_cases": ["agents", "RAG", "tool use"],
+    "logo": ""
+  },
+  {
+    "name": "Fixie",
+    "category": "Agents / Automation",
+    "summary": "Build and deploy AI agents that use tools.",
+    "website": "https://www.fixie.ai/",
+    "use_cases": ["workflows", "integrations", "agents"],
+    "logo": ""
+  },
+  {
+    "name": "Zapier AI",
+    "category": "Automation / Agents",
+    "summary": "AI actions and workflows across apps.",
+    "website": "https://zapier.com/ai",
+    "use_cases": ["automation", "agents", "ops"],
+    "logo": ""
+  },
+  {
+    "name": "Hugging Face Spaces",
+    "category": "Open-Source Hub",
+    "summary": "Community demos for ML models and apps.",
+    "website": "https://huggingface.co/spaces",
+    "use_cases": ["try models", "host demos", "share apps"],
+    "logo": ""
+  },
+  {
+    "name": "DigiLabs",
+    "category": "Video / Creative",
+    "summary": "Creative AI studio tools (verify exact site/brand).",
+    "website": "https://digilabs.ai/",
+    "use_cases": ["content", "video", "branding"],
+    "logo": ""
+  },
+  {
+    "name": "Character.AI",
+    "category": "Character Chat",
+    "summary": "Create and chat with AI characters.",
+    "website": "https://beta.character.ai/",
+    "use_cases": ["roleplay", "fun", "learning"],
+    "logo": ""
+  },
+  {
+    "name": "Tome",
+    "category": "Presentations / Content",
+    "summary": "AI-powered presentations and storytelling.",
+    "website": "https://tome.app/",
+    "use_cases": ["decks", "narratives", "storyboards"],
+    "logo": ""
+  },
+  {
+    "name": "Gamma",
+    "category": "Presentations / Docs",
+    "summary": "AI decks, docs, and webpages.",
+    "website": "https://gamma.app/",
+    "use_cases": ["presentations", "docs", "landing pages"],
+    "logo": ""
+  },
+  {
+    "name": "Notably",
+    "category": "Research / UX",
+    "summary": "AI for research notes and insights.",
+    "website": "https://www.notably.ai/",
+    "use_cases": ["user research", "themes", "synthesis"],
+    "logo": ""
+  },
+  {
+    "name": "Perplexity Pages",
+    "category": "Research / Publishing",
+    "summary": "Create research pages with sources.",
+    "website": "https://www.perplexity.ai/",
+    "use_cases": ["reports", "briefs", "explainers"],
+    "logo": ""
   }
 ]
