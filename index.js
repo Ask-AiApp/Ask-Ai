@@ -23,14 +23,14 @@ app.use(express.json({ limit: "1mb" }));
 // -----------------------------
 // Boot log (which keys are present)
 // -----------------------------
-function present(name, env) {
+function present(env) {
   return process.env[env] ? "✅" : "—";
 }
 console.log("Ask-AI backend starting...");
-console.log(`OpenAI:     ${present("OpenAI", "OPENAI_API_KEY")}`);
-console.log(`Anthropic:  ${present("Anthropic", "ANTHROPIC_API_KEY")}`);
-console.log(`Gemini:     ${present("Gemini", "GEMINI_API_KEY")}`);
-console.log(`Groq:       ${present("Groq", "GROQ_API_KEY")}`);
+console.log(`OpenAI:   ${present("OPENAI_API_KEY")}`);
+console.log(`Mistral:  ${present("MISTRAL_API_KEY")}`);
+console.log(`Gemini:   ${present("GEMINI_API_KEY")}`);
+console.log(`Groq:     ${present("GROQ_API_KEY")}`);
 
 // -----------------------------
 // Health & root
@@ -74,37 +74,40 @@ async function askOpenAI(prompt) {
   }
 }
 
-async function askClaude(prompt) {
+async function askMistral(prompt) {
   try {
-    if (!process.env.ANTHROPIC_API_KEY) {
-      return { provider: "Claude", text: "Claude placeholder response (no API key set)" };
+    if (!process.env.MISTRAL_API_KEY) {
+      return { provider: "Mistral", text: "Mistral placeholder response (no API key set)" };
     }
-    const model = process.env.ANTHROPIC_MODEL || "claude-3-5-sonnet-latest";
-    const version = process.env.ANTHROPIC_VERSION || "2023-06-01";
+    // Common models: "mistral-large-latest", "mistral-small-latest", etc.
+    const model = process.env.MISTRAL_MODEL || "mistral-large-latest";
     const r = await axios.post(
-      "https://api.anthropic.com/v1/messages",
+      "https://api.mistral.ai/v1/chat/completions",
       {
         model,
-        max_tokens: 512,
-        messages: [{ role: "user", content: prompt }]
+        messages: [{ role: "user", content: prompt }],
+        temperature: 0.7
       },
       {
         headers: {
-          "x-api-key": process.env.ANTHROPIC_API_KEY,
-          "anthropic-version": version,
+          Authorization: `Bearer ${process.env.MISTRAL_API_KEY}`,
           "Content-Type": "application/json"
         },
         timeout: 20000
       }
     );
-    // Try top-level 'text', else first block text
-    const top = r.data?.content?.[0]?.text?.trim();
-    const nested = r.data?.content?.[0]?.content?.[0]?.text?.trim();
-    const text = top || nested || "No content returned.";
-    return { provider: "Claude", text };
+    const text =
+      r.data?.choices?.[0]?.message?.content?.trim() ||
+      r.data?.choices?.[0]?.text?.trim() ||
+      "No content returned.";
+    return { provider: "Mistral", text };
   } catch (e) {
-    const msg = e?.response?.data?.error?.message || e?.message || "Unknown error";
-    return { provider: "Claude", text: mapFriendlyError(msg) };
+    const msg =
+      e?.response?.data?.error?.message ||
+      e?.response?.data?.message ||
+      e?.message ||
+      "Unknown error";
+    return { provider: "Mistral", text: mapFriendlyError(msg) };
   }
 }
 
@@ -131,7 +134,6 @@ async function askGemini(prompt) {
       "No content returned.";
     return { provider: "Gemini", text };
   } catch (e) {
-    // Gemini errors often come as { error: { message } }
     const msg =
       e?.response?.data?.error?.message ||
       e?.response?.data?.message ||
@@ -192,10 +194,10 @@ app.post("/ask", async (req, res) => {
   const prompt = String(req.body?.prompt ?? "").trim().slice(0, 2000);
 
   const jobs = [
-    ["OpenAI", () => askOpenAI(prompt)],
-    ["Claude", () => askClaude(prompt)],
-    ["Gemini", () => askGemini(prompt)],
-    ["Groq",   () => askGroq(prompt)]
+    ["OpenAI",  () => askOpenAI(prompt)],
+    ["Mistral", () => askMistral(prompt)],
+    ["Gemini",  () => askGemini(prompt)],
+    ["Groq",    () => askGroq(prompt)]
   ];
 
   const settled = await Promise.allSettled(jobs.map(([_, fn]) => fn()));
