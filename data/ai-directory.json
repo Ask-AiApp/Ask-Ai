@@ -1264,14 +1264,6 @@
     "website": "https://github.com/open-webui"
   },
   {
-    "id": 159,
-    "name": "LangChain",
-    "category": "Open Source Projects",
-    "summary": "Orchestration for agents.",
-    "use_cases": ["Tools", "agents"],
-    "website": "https://langchain.com"
-  },
-  {
     "id": 160,
     "name": "LlamaIndex",
     "category": "Open Source Projects",
