@@ -1,0 +1,2567 @@
+<<<<<<< HEAD
+[
+  {
+    "id": 1,
+    "name": "OpenAI",
+    "category": "Foundation / General Models",
+    "summary": "Foundation models (GPT-4o/4.1, o3). Assistants API; multimodal.",
+    "use_cases": ["Chat", "agents", "RAG", "code", "speech"],
+    "website": "https://openai.com"
+  },
+  {
+    "id": 2,
+    "name": "Google DeepMind",
+    "category": "Foundation / General Models",
+    "summary": "Gemini family; multimodal; research-backed.",
+    "use_cases": ["Chat", "reasoning", "tools", "search infusion"],
+    "website": "https://deepmind.google"
+  },
+  {
+    "id": 3,
+    "name": "Anthropic",
+    "category": "Foundation / General Models",
+    "summary": "Claude models focused on safety and steerability.",
+    "use_cases": ["Assistants", "enterprise copilots"],
+    "website": "https://www.anthropic.com"
+  },
+  {
+    "id": 4,
+    "name": "Meta AI",
+    "category": "Foundation / General Models",
+    "summary": "Llama open models; research-first.",
+    "use_cases": ["Open-source LLMs", "fine-tuning"],
+    "website": "https://ai.meta.com"
+  },
+  {
+    "id": 5,
+    "name": "Mistral AI",
+    "category": "Foundation / General Models",
+    "summary": "Efficient open & hosted models (Mixtral).",
+    "use_cases": ["Lightweight LLMs", "local/edge"],
+    "website": "https://mistral.ai"
+  },
+  {
+    "id": 6,
+    "name": "Cohere",
+    "category": "Foundation / General Models",
+    "summary": "Enterprise language models & RAG platform.",
+    "use_cases": ["Search", "classify", "generate"],
+    "website": "https://cohere.com"
+  },
+  {
+    "id": 7,
+    "name": "xAI",
+    "category": "Foundation / General Models",
+    "summary": "Grok series models with real-time context.",
+    "use_cases": ["Real-time", "reasoning chat"],
+    "website": "https://x.ai"
+  },
+  {
+    "id": 8,
+    "name": "Alibaba Qwen",
+    "category": "Foundation / General Models",
+    "summary": "Qwen models; multilingual; open & hosted.",
+    "use_cases": ["Multilingual apps", "agents"],
+    "website": "https://qwenlm.ai"
+  },
+  {
+    "id": 9,
+    "name": "Huawei (PanGu)",
+    "category": "Foundation / General Models",
+    "summary": "Chinese-focused foundation models.",
+    "use_cases": ["Industry vertical copilots"],
+    "website": "https://www.huawei.com"
+  },
+  {
+    "id": 10,
+    "name": "Baidu ERNIE",
+    "category": "Foundation / General Models",
+    "summary": "Chinese LLM stack integrated with search.",
+    "use_cases": ["Search", "enterprise assistants"],
+    "website": "https://www.baidu.com"
+  },
+  {
+    "id": 11,
+    "name": "NVIDIA NIM",
+    "category": "Foundation / General Models",
+    "summary": "Inference microservices for top models.",
+    "use_cases": ["Deploy/optimize LLMs"],
+    "website": "https://www.nvidia.com/ai"
+  },
+  {
+    "id": 12,
+    "name": "Together AI",
+    "category": "Foundation / General Models",
+    "summary": "Hosted OSS models & efficient inference.",
+    "use_cases": ["Cost-efficient inference", "evals"],
+    "website": "https://www.together.ai"
+  },
+  {
+    "id": 13,
+    "name": "Perplexity",
+    "category": "Foundation / General Models",
+    "summary": "Answer engine plus proprietary models.",
+    "use_cases": ["Search Q&A with citations"],
+    "website": "https://www.perplexity.ai"
+  },
+  {
+    "id": 14,
+    "name": "Aleph Alpha",
+    "category": "Foundation / General Models",
+    "summary": "Sovereign EU-centric models for regulated sectors.",
+    "use_cases": ["On-prem/regulated deployments"],
+    "website": "https://www.aleph-alpha.com"
+  },
+  {
+    "id": 15,
+    "name": "Stability AI",
+    "category": "Foundation / General Models",
+    "summary": "Stable series for image/audio/video.",
+    "use_cases": ["Generative media"],
+    "website": "https://stability.ai"
+  },
+  {
+    "id": 16,
+    "name": "Microsoft Copilot",
+    "category": "Assistants & AI Search",
+    "summary": "Assistant across M365 and Bing.",
+    "use_cases": ["Writing", "code", "meetings"],
+    "website": "https://copilot.microsoft.com"
+  },
+  {
+    "id": 17,
+    "name": "You.com",
+    "category": "Assistants & AI Search",
+    "summary": "Private AI search and assistant.",
+    "use_cases": ["Research", "chat", "code"],
+    "website": "https://you.com"
+  },
+  {
+    "id": 18,
+    "name": "Phind",
+    "category": "Assistants & AI Search",
+    "summary": "Developer-focused AI search.",
+    "use_cases": ["Coding answers", "snippets"],
+    "website": "https://www.phind.com"
+  },
+  {
+    "id": 19,
+    "name": "Arc Search",
+    "category": "Assistants & AI Search",
+    "summary": "AI-enhanced mobile search.",
+    "use_cases": ["Summaries", "browse"],
+    "website": "https://arc.net"
+  },
+  {
+    "id": 20,
+    "name": "Brave Leo",
+    "category": "Assistants & AI Search",
+    "summary": "Private browser assistant in Brave.",
+    "use_cases": ["Page Q&A", "summaries"],
+    "website": "https://brave.com/leo"
+  },
+  {
+    "id": 21,
+    "name": "DuckDuckGo AI",
+    "category": "Assistants & AI Search",
+    "summary": "Private AI answers in search.",
+    "use_cases": ["Search Q&A"],
+    "website": "https://duckduckgo.com"
+  },
+  {
+    "id": 22,
+    "name": "Jasper",
+    "category": "Writing & Content",
+    "summary": "Marketing copilot with brand voice control.",
+    "use_cases": ["Blogs", "ads", "landing pages"],
+    "website": "https://www.jasper.ai"
+  },
+  {
+    "id": 23,
+    "name": "Copy.ai",
+    "category": "Writing & Content",
+    "summary": "Sales and marketing AI workflows.",
+    "use_cases": ["Sequences", "cold outreach"],
+    "website": "https://www.copy.ai"
+  },
+  {
+    "id": 24,
+    "name": "Writer.com",
+    "category": "Writing & Content",
+    "summary": "Enterprise writing guardrails & governance.",
+    "use_cases": ["Brand-safe content"],
+    "website": "https://writer.com"
+  },
+  {
+    "id": 25,
+    "name": "Notion AI",
+    "category": "Writing & Content",
+    "summary": "AI features embedded in Notion.",
+    "use_cases": ["Notes", "docs", "databases"],
+    "website": "https://www.notion.so"
+  },
+  {
+    "id": 26,
+    "name": "Grammarly",
+    "category": "Writing & Content",
+    "summary": "AI writing, tone and correctness.",
+    "use_cases": ["Editing", "rewrites"],
+    "website": "https://grammarly.com"
+  },
+  {
+    "id": 27,
+    "name": "Anyword",
+    "category": "Writing & Content",
+    "summary": "Conversion-focused content generation.",
+    "use_cases": ["Social", "ads", "landing pages"],
+    "website": "https://anyword.com"
+  },
+  {
+    "id": 28,
+    "name": "Descript",
+    "category": "Writing & Content",
+    "summary": "Text-based audio/video editing.",
+    "use_cases": ["Podcasts", "video clips"],
+    "website": "https://www.descript.com"
+  },
+  {
+    "id": 29,
+    "name": "QuillBot",
+    "category": "Writing & Content",
+    "summary": "Paraphrasing and summarization tools.",
+    "use_cases": ["Rewrites", "citations"],
+    "website": "https://quillbot.com"
+  },
+  {
+    "id": 30,
+    "name": "Midjourney",
+    "category": "Art, Design & Creative",
+    "summary": "High-quality text-to-image generation.",
+    "use_cases": ["Concept art", "design"],
+    "website": "https://www.midjourney.com"
+  },
+  {
+    "id": 31,
+    "name": "Adobe Firefly",
+    "category": "Art, Design & Creative",
+    "summary": "Generative features across Adobe CC.",
+    "use_cases": ["Image", "vector", "effects"],
+    "website": "https://www.adobe.com/firefly"
+  },
+  {
+    "id": 32,
+    "name": "Runway",
+    "category": "Art, Design & Creative",
+    "summary": "Generative video & advanced editing.",
+    "use_cases": ["SFX", "text-to-video"],
+    "website": "https://runwayml.com"
+  },
+  {
+    "id": 33,
+    "name": "Leonardo.ai",
+    "category": "Art, Design & Creative",
+    "summary": "Asset creation suite for designers.",
+    "use_cases": ["Game assets", "3D", "styles"],
+    "website": "https://leonardo.ai"
+  },
+  {
+    "id": 34,
+    "name": "Pika Labs",
+    "category": "Art, Design & Creative",
+    "summary": "Generative video platform.",
+    "use_cases": ["Shorts", "concepts"],
+    "website": "https://pika.art"
+  },
+  {
+    "id": 35,
+    "name": "KAIBER",
+    "category": "Art, Design & Creative",
+    "summary": "Music-video visuals.",
+    "use_cases": ["Artist visuals"],
+    "website": "https://www.kaiber.ai"
+  },
+  {
+    "id": 36,
+    "name": "Scenario",
+    "category": "Art, Design & Creative",
+    "summary": "Game asset generation.",
+    "use_cases": ["Characters", "props", "styles"],
+    "website": "https://www.scenario.com"
+  },
+  {
+    "id": 37,
+    "name": "OpenAI Sora (preview)",
+    "category": "Video & Generative Media",
+    "summary": "Text-to-video research model.",
+    "use_cases": ["Cinematic previsualization"],
+    "website": "https://openai.com"
+  },
+  {
+    "id": 38,
+    "name": "Synthesia",
+    "category": "Video & Generative Media",
+    "summary": "AI avatar & multilingual video.",
+    "use_cases": ["Training", "comms"],
+    "website": "https://www.synthesia.io"
+  },
+  {
+    "id": 39,
+    "name": "HeyGen",
+    "category": "Video & Generative Media",
+    "summary": "AI avatars and dubbing.",
+    "use_cases": ["Multilingual content"],
+    "website": "https://www.heygen.com"
+  },
+  {
+    "id": 40,
+    "name": "Colossyan",
+    "category": "Video & Generative Media",
+    "summary": "AI presenters for video.",
+    "use_cases": ["How-tos", "learning"],
+    "website": "https://www.colossyan.com"
+  },
+  {
+    "id": 41,
+    "name": "Luma AI",
+    "category": "Video & Generative Media",
+    "summary": "NeRFs & photoreal 3D capture.",
+    "use_cases": ["Product/scene capture"],
+    "website": "https://lumalabs.ai"
+  },
+  {
+    "id": 42,
+    "name": "ElevenLabs",
+    "category": "Audio, Speech & Voice",
+    "summary": "Voice cloning and high-quality TTS.",
+    "use_cases": ["Dubbing", "narration"],
+    "website": "https://elevenlabs.io"
+  },
+  {
+    "id": 43,
+    "name": "Play.ht",
+    "category": "Audio, Speech & Voice",
+    "summary": "Advanced TTS with many voices.",
+    "use_cases": ["Audiobooks", "apps"],
+    "website": "https://play.ht"
+  },
+  {
+    "id": 44,
+    "name": "Resemble.ai",
+    "category": "Audio, Speech & Voice",
+    "summary": "Voice AI stack including cloning.",
+    "use_cases": ["Dubbing", "IVR", "games"],
+    "website": "https://www.resemble.ai"
+  },
+  {
+    "id": 45,
+    "name": "Speechify",
+    "category": "Audio, Speech & Voice",
+    "summary": "TTS reader and learning aid.",
+    "use_cases": ["Accessibility", "study"],
+    "website": "https://speechify.com"
+  },
+  {
+    "id": 46,
+    "name": "Altered Studio",
+    "category": "Audio, Speech & Voice",
+    "summary": "AI voice acting for creators.",
+    "use_cases": ["Games", "media"],
+    "website": "https://www.altered.ai"
+  },
+  {
+    "id": 47,
+    "name": "Coqui",
+    "category": "Audio, Speech & Voice",
+    "summary": "Open-source voice models.",
+    "use_cases": ["Local TTS/STT"],
+    "website": "https://coqui.ai"
+  },
+  {
+    "id": 48,
+    "name": "OpenAI Whisper",
+    "category": "Audio, Speech & Voice",
+    "summary": "Open STT model for transcription.",
+    "use_cases": ["Captions", "transcripts"],
+    "website": "https://openai.com/research/whisper"
+  },
+  {
+    "id": 49,
+    "name": "GitHub Copilot",
+    "category": "Coding & Developer Tools",
+    "summary": "AI pair programmer in IDEs.",
+    "use_cases": ["Autocomplete", "code chat"],
+    "website": "https://github.com/features/copilot"
+  },
+  {
+    "id": 50,
+    "name": "Replit",
+    "category": "Coding & Developer Tools",
+    "summary": "AI coding workspace and agents.",
+    "use_cases": ["Code", "deploy", "host"],
+    "website": "https://replit.com"
+  },
+  {
+    "id": 51,
+    "name": "Cursor",
+    "category": "Coding & Developer Tools",
+    "summary": "AI-powered code editor.",
+    "use_cases": ["Refactors", "code chat"],
+    "website": "https://cursor.sh"
+  },
+  {
+    "id": 52,
+    "name": "Codeium",
+    "category": "Coding & Developer Tools",
+    "summary": "Free AI coding assistant.",
+    "use_cases": ["Completion", "chat"],
+    "website": "https://codeium.com"
+  },
+  {
+    "id": 53,
+    "name": "Tabnine",
+    "category": "Coding & Developer Tools",
+    "summary": "On-prem/private code models.",
+    "use_cases": ["Private completion"],
+    "website": "https://www.tabnine.com"
+  },
+  {
+    "id": 54,
+    "name": "Sourcegraph Cody",
+    "category": "Coding & Developer Tools",
+    "summary": "Codebase-aware assistant.",
+    "use_cases": ["Search", "context", "chat"],
+    "website": "https://sourcegraph.com/cody"
+  },
+  {
+    "id": 55,
+    "name": "Continue.dev",
+    "category": "Coding & Developer Tools",
+    "summary": "OSS IDE assistant.",
+    "use_cases": ["VS Code/JetBrains"],
+    "website": "https://continue.dev"
+  },
+  {
+    "id": 56,
+    "name": "JetBrains AI",
+    "category": "Coding & Developer Tools",
+    "summary": "AI features across JetBrains IDEs.",
+    "use_cases": ["Code", "docs", "search"],
+    "website": "https://www.jetbrains.com/ai"
+  },
+  {
+    "id": 57,
+    "name": "LangChain",
+    "category": "Coding & Developer Tools",
+    "summary": "Agentic orchestration framework.",
+    "use_cases": ["Tools", "agents", "RAG"],
+    "website": "https://langchain.com"
+  },
+  {
+    "id": 58,
+    "name": "LlamaIndex",
+    "category": "Coding & Developer Tools",
+    "summary": "Data framework for LLMs.",
+    "use_cases": ["RAG pipelines"],
+    "website": "https://www.llamaindex.ai"
+  },
+  {
+    "id": 59,
+    "name": "Modal",
+    "category": "Coding & Developer Tools",
+    "summary": "Serverless infra for AI workloads.",
+    "use_cases": ["Jobs", "inference"],
+    "website": "https://modal.com"
+  },
+  {
+    "id": 60,
+    "name": "Vercel AI",
+    "category": "Coding & Developer Tools",
+    "summary": "AI SDKs + hosting.",
+    "use_cases": ["Web AI apps"],
+    "website": "https://vercel.com/ai"
+  },
+  {
+    "id": 61,
+    "name": "Hugging Face",
+    "category": "Coding & Developer Tools",
+    "summary": "Models/datasets hub & Inference.",
+    "use_cases": ["Model hosting", "Spaces"],
+    "website": "https://huggingface.co"
+  },
+  {
+    "id": 62,
+    "name": "Otter.ai",
+    "category": "Business Productivity & Meetings",
+    "summary": "Meeting transcription and notes.",
+    "use_cases": ["Summaries", "action items"],
+    "website": "https://otter.ai"
+  },
+  {
+    "id": 63,
+    "name": "Fireflies",
+    "category": "Business Productivity & Meetings",
+    "summary": "AI for calls/meetings.",
+    "use_cases": ["Notes", "tasks"],
+    "website": "https://fireflies.ai"
+  },
+  {
+    "id": 64,
+    "name": "Supernormal",
+    "category": "Business Productivity & Meetings",
+    "summary": "Automated meeting minutes.",
+    "use_cases": ["Briefs", "summaries"],
+    "website": "https://supernormal.com"
+  },
+  {
+    "id": 65,
+    "name": "Fathom",
+    "category": "Business Productivity & Meetings",
+    "summary": "Free meeting recorder.",
+    "use_cases": ["Summaries", "CRM notes"],
+    "website": "https://fathom.video"
+  },
+  {
+    "id": 66,
+    "name": "Rewind AI",
+    "category": "Business Productivity & Meetings",
+    "summary": "Local-first personal memory.",
+    "use_cases": ["Recall", "search"],
+    "website": "https://www.rewind.ai"
+  },
+  {
+    "id": 67,
+    "name": "Adept AI",
+    "category": "Business Productivity & Meetings",
+    "summary": "Action models for software UIs.",
+    "use_cases": ["UI automation"],
+    "website": "https://www.adept.ai"
+  },
+  {
+    "id": 68,
+    "name": "Magical",
+    "category": "Business Productivity & Meetings",
+    "summary": "Workflow macros for teams.",
+    "use_cases": ["Sales/admin automations"],
+    "website": "https://www.getmagical.com"
+  },
+  {
+    "id": 69,
+    "name": "HubSpot AI",
+    "category": "Sales, Marketing & Support",
+    "summary": "AI across HubSpot CRM.",
+    "use_cases": ["Sequences", "content"],
+    "website": "https://hubspot.com"
+  },
+  {
+    "id": 70,
+    "name": "Drift",
+    "category": "Sales, Marketing & Support",
+    "summary": "Conversational marketing AI.",
+    "use_cases": ["Lead chat", "routing"],
+    "website": "https://www.drift.com"
+  },
+  {
+    "id": 71,
+    "name": "Intercom Fin",
+    "category": "Sales, Marketing & Support",
+    "summary": "AI support bot.",
+    "use_cases": ["Triage", "auto-answers"],
+    "website": "https://www.intercom.com"
+  },
+  {
+    "id": 72,
+    "name": "Zendesk AI",
+    "category": "Sales, Marketing & Support",
+    "summary": "AI features for support.",
+    "use_cases": ["Macros", "bots", "assist"],
+    "website": "https://www.zendesk.com"
+  },
+  {
+    "id": 73,
+    "name": "Ada",
+    "category": "Sales, Marketing & Support",
+    "summary": "CX automation platform.",
+    "use_cases": ["Deflection", "handoff"],
+    "website": "https://www.ada.cx"
+  },
+  {
+    "id": 74,
+    "name": "Forethought",
+    "category": "Sales, Marketing & Support",
+    "summary": "Support copilots.",
+    "use_cases": ["Agent assist", "answers"],
+    "website": "https://forethought.ai"
+  },
+  {
+    "id": 75,
+    "name": "Moveworks",
+    "category": "Sales, Marketing & Support",
+    "summary": "Internal support AI.",
+    "use_cases": ["IT/HR automation"],
+    "website": "https://www.moveworks.com"
+  },
+  {
+    "id": 76,
+    "name": "Khanmigo",
+    "category": "Education & Research",
+    "summary": "AI tutor by Khan Academy.",
+    "use_cases": ["Guided learning"],
+    "website": "https://www.khanacademy.org"
+  },
+  {
+    "id": 77,
+    "name": "Elicit",
+    "category": "Education & Research",
+    "summary": "Research assistant for papers.",
+    "use_cases": ["Discovery", "syntheses"],
+    "website": "https://elicit.org"
+  },
+  {
+    "id": 78,
+    "name": "Perplexity EDU",
+    "category": "Education & Research",
+    "summary": "Student-friendly Q&A with sources.",
+    "use_cases": ["Research with citations"],
+    "website": "https://www.perplexity.ai"
+  },
+  {
+    "id": 79,
+    "name": "Gradescope",
+    "category": "Education & Research",
+    "summary": "AI-assisted grading.",
+    "use_cases": ["Rubrics", "feedback"],
+    "website": "https://www.gradescope.com"
+  },
+  {
+    "id": 80,
+    "name": "Socratic",
+    "category": "Education & Research",
+    "summary": "Homework helper by Google.",
+    "use_cases": ["Step-by-step help"],
+    "website": "https://socratic.org"
+  },
+  {
+    "id": 81,
+    "name": "Consensus",
+    "category": "Education & Research",
+    "summary": "Evidence-based Q&A from papers.",
+    "use_cases": ["Literature summaries"],
+    "website": "https://consensus.app"
+  },
+  {
+    "id": 82,
+    "name": "Scite",
+    "category": "Education & Research",
+    "summary": "Smart citations and evidence graphs.",
+    "use_cases": ["Citation analysis"],
+    "website": "https://scite.ai"
+  },
+  {
+    "id": 83,
+    "name": "Insilico Medicine",
+    "category": "Healthcare & Biotech",
+    "summary": "End-to-end AI drug discovery.",
+    "use_cases": ["Target ID", "design"],
+    "website": "https://insilico.com"
+  },
+  {
+    "id": 84,
+    "name": "Atomwise",
+    "category": "Healthcare & Biotech",
+    "summary": "Small-molecule discovery with AI.",
+    "use_cases": ["Virtual screening"],
+    "website": "https://atomwise.com"
+  },
+  {
+    "id": 85,
+    "name": "Recursion",
+    "category": "Healthcare & Biotech",
+    "summary": "Phenotypic data + ML platforms.",
+    "use_cases": ["Discovery", "insights"],
+    "website": "https://www.recursion.com"
+  },
+  {
+    "id": 86,
+    "name": "DeepMind Health",
+    "category": "Healthcare & Biotech",
+    "summary": "Medical AI research outputs.",
+    "use_cases": ["Imaging", "protein"],
+    "website": "https://deepmind.google"
+  },
+  {
+    "id": 87,
+    "name": "Hippocratic",
+    "category": "Healthcare & Biotech",
+    "summary": "Safety-first medical AI.",
+    "use_cases": ["Clinical copilots"],
+    "website": "https://www.hippocratic.ai"
+  },
+  {
+    "id": 88,
+    "name": "Nabla",
+    "category": "Healthcare & Biotech",
+    "summary": "Doctor copilot for notes.",
+    "use_cases": ["Clinical docs", "claims"],
+    "website": "https://www.nabla.com"
+  },
+  {
+    "id": 89,
+    "name": "Kensho (S&P)",
+    "category": "Finance & Fintech",
+    "summary": "Financial AI for events/entities.",
+    "use_cases": ["Analytics", "NLP"],
+    "website": "https://www.spglobal.com/kensho"
+  },
+  {
+    "id": 90,
+    "name": "Numerai",
+    "category": "Finance & Fintech",
+    "summary": "Crowd-sourced modeling tournament.",
+    "use_cases": ["Signals", "hedge fund"],
+    "website": "https://numer.ai"
+  },
+  {
+    "id": 91,
+    "name": "Upstart",
+    "category": "Finance & Fintech",
+    "summary": "AI-enabled lending decisions.",
+    "use_cases": ["Credit underwriting"],
+    "website": "https://www.upstart.com"
+  },
+  {
+    "id": 92,
+    "name": "Zest AI",
+    "category": "Finance & Fintech",
+    "summary": "Risk modeling for lending.",
+    "use_cases": ["Underwriting"],
+    "website": "https://www.zest.ai"
+  },
+  {
+    "id": 93,
+    "name": "Databricks",
+    "category": "Finance & Fintech",
+    "summary": "Lakehouse with AI/ML tooling.",
+    "use_cases": ["Risk", "fraud", "RAG"],
+    "website": "https://databricks.com"
+  },
+  {
+    "id": 94,
+    "name": "Abacus.AI",
+    "category": "Finance & Fintech",
+    "summary": "Real-time AI pipelines.",
+    "use_cases": ["Forecasting", "fraud"],
+    "website": "https://www.abacus.ai"
+  },
+  {
+    "id": 95,
+    "name": "Harvey",
+    "category": "Legal & Compliance",
+    "summary": "AI for global law firms.",
+    "use_cases": ["Drafts", "research"],
+    "website": "https://www.harvey.ai"
+  },
+  {
+    "id": 96,
+    "name": "Casetext (CoCounsel)",
+    "category": "Legal & Compliance",
+    "summary": "Legal research copilot.",
+    "use_cases": ["Briefs", "memos"],
+    "website": "https://casetext.com"
+  },
+  {
+    "id": 97,
+    "name": "Spellbook",
+    "category": "Legal & Compliance",
+    "summary": "Contracts AI in Word/CLM.",
+    "use_cases": ["Draft/review"],
+    "website": "https://www.spellbook.legal"
+  },
+  {
+    "id": 98,
+    "name": "EvenUp",
+    "category": "Legal & Compliance",
+    "summary": "Injury law automation.",
+    "use_cases": ["Demand letters"],
+    "website": "https://www.evenuplaw.com"
+  },
+  {
+    "id": 99,
+    "name": "Klarity",
+    "category": "Legal & Compliance",
+    "summary": "Contract review with playbooks.",
+    "use_cases": ["Risk checks"],
+    "website": "https://www.getklarity.com"
+  },
+  {
+    "id": 100,
+    "name": "Eightfold.ai",
+    "category": "HR & Recruiting",
+    "summary": "Talent intelligence platform.",
+    "use_cases": ["Match", "mobility"],
+    "website": "https://eightfold.ai"
+  },
+  {
+    "id": 101,
+    "name": "HireVue",
+    "category": "HR & Recruiting",
+    "summary": "Video + AI hiring tools.",
+    "use_cases": ["Screening", "chat"],
+    "website": "https://www.hirevue.com"
+  },
+  {
+    "id": 102,
+    "name": "Paradox",
+    "category": "HR & Recruiting",
+    "summary": "Recruiting assistant (Olivia).",
+    "use_cases": ["Scheduling", "chat"],
+    "website": "https://www.paradox.ai"
+  },
+  {
+    "id": 103,
+    "name": "Ashby",
+    "category": "HR & Recruiting",
+    "summary": "Modern recruiting suite.",
+    "use_cases": ["Sourcing", "analytics"],
+    "website": "https://www.ashbyhq.com"
+  },
+  {
+    "id": 104,
+    "name": "SeekOut",
+    "category": "HR & Recruiting",
+    "summary": "AI talent search platform.",
+    "use_cases": ["Sourcing", "CRM"],
+    "website": "https://www.seekout.com"
+  },
+  {
+    "id": 105,
+    "name": "Shopify Magic",
+    "category": "E-commerce & Retail",
+    "summary": "AI features across Shopify.",
+    "use_cases": ["Descriptions", "chat"],
+    "website": "https://www.shopify.com"
+  },
+  {
+    "id": 106,
+    "name": "Attentive",
+    "category": "E-commerce & Retail",
+    "summary": "SMS marketing with AI.",
+    "use_cases": ["Personalized SMS"],
+    "website": "https://attentive.com"
+  },
+  {
+    "id": 107,
+    "name": "Algolia AI",
+    "category": "E-commerce & Retail",
+    "summary": "Search with vectors & hybrid.",
+    "use_cases": ["Product discovery"],
+    "website": "https://www.algolia.com"
+  },
+  {
+    "id": 108,
+    "name": "Nosto",
+    "category": "E-commerce & Retail",
+    "summary": "Personalization for retail.",
+    "use_cases": ["Recommendations"],
+    "website": "https://www.nosto.com"
+  },
+  {
+    "id": 109,
+    "name": "Inworld AI",
+    "category": "Gaming & Interactive",
+    "summary": "NPC brains for games/sims.",
+    "use_cases": ["Dialogue", "behavior"],
+    "website": "https://inworld.ai"
+  },
+  {
+    "id": 110,
+    "name": "Convai",
+    "category": "Gaming & Interactive",
+    "summary": "Real-time voice NPCs.",
+    "use_cases": ["Game/3D agents"],
+    "website": "https://convai.com"
+  },
+  {
+    "id": 111,
+    "name": "Latitude (AI Dungeon)",
+    "category": "Gaming & Interactive",
+    "summary": "AI story worlds & tools.",
+    "use_cases": ["Narrative games"],
+    "website": "https://latitude.io"
+  },
+  {
+    "id": 112,
+    "name": "Scenario",
+    "category": "Gaming & Interactive",
+    "summary": "Game asset generation.",
+    "use_cases": ["Assets", "styles"],
+    "website": "https://www.scenario.com"
+  },
+  {
+    "id": 113,
+    "name": "Altered Studio",
+    "category": "Gaming & Interactive",
+    "summary": "AI voice acting.",
+    "use_cases": ["Characters VO"],
+    "website": "https://www.altered.ai"
+  },
+  {
+    "id": 114,
+    "name": "Figure AI",
+    "category": "Robotics, Industrial & Edge",
+    "summary": "Humanoid robots with AI.",
+    "use_cases": ["Manipulation tasks"],
+    "website": "https://www.figure.ai"
+  },
+  {
+    "id": 115,
+    "name": "Covariant",
+    "category": "Robotics, Industrial & Edge",
+    "summary": "Robot brains for logistics.",
+    "use_cases": ["Pick/pack", "vision"],
+    "website": "https://covariant.ai"
+  },
+  {
+    "id": 116,
+    "name": "Boston Dynamics",
+    "category": "Robotics, Industrial & Edge",
+    "summary": "Robotics & mobility R&D.",
+    "use_cases": ["Inspection", "mobility"],
+    "website": "https://www.bostondynamics.com"
+  },
+  {
+    "id": 117,
+    "name": "Intrinsic (Alphabet)",
+    "category": "Robotics, Industrial & Edge",
+    "summary": "Robot software platform.",
+    "use_cases": ["Programming tools"],
+    "website": "https://intrinsic.ai"
+  },
+  {
+    "id": 118,
+    "name": "OpenVINO (Intel)",
+    "category": "Robotics, Industrial & Edge",
+    "summary": "Edge inference toolkit.",
+    "use_cases": ["On-device vision"],
+    "website": "https://www.intel.com/openvino"
+  },
+  {
+    "id": 119,
+    "name": "OctoML",
+    "category": "Robotics, Industrial & Edge",
+    "summary": "Model optimization and serving.",
+    "use_cases": ["Cost/perf tuning"],
+    "website": "https://octoml.ai"
+  },
+  {
+    "id": 120,
+    "name": "ClimateAI",
+    "category": "Sustainability & Climate",
+    "summary": "Forecasting & risk analytics.",
+    "use_cases": ["Supply chain climate"],
+    "website": "https://climate.ai"
+  },
+  {
+    "id": 121,
+    "name": "Tomorrow.io",
+    "category": "Sustainability & Climate",
+    "summary": "Weather AI & APIs.",
+    "use_cases": ["Aviation", "logistics"],
+    "website": "https://www.tomorrow.io"
+  },
+  {
+    "id": 122,
+    "name": "Descartes Labs",
+    "category": "Sustainability & Climate",
+    "summary": "Geospatial analytics.",
+    "use_cases": ["Monitoring", "agri"],
+    "website": "https://www.descarteslabs.com"
+  },
+  {
+    "id": 123,
+    "name": "Pachama",
+    "category": "Sustainability & Climate",
+    "summary": "Forest monitoring & MRV.",
+    "use_cases": ["Carbon projects"],
+    "website": "https://pachama.com"
+  },
+  {
+    "id": 124,
+    "name": "Watershed",
+    "category": "Sustainability & Climate",
+    "summary": "Carbon management suite.",
+    "use_cases": ["Reporting", "reductions"],
+    "website": "https://watershed.com"
+  },
+  {
+    "id": 125,
+    "name": "OpenAI Safety Systems",
+    "category": "Security, Trust & Safety",
+    "summary": "Safety tooling and evals.",
+    "use_cases": ["Moderation", "red teaming"],
+    "website": "https://openai.com"
+  },
+  {
+    "id": 126,
+    "name": "Scale AI (Safety)",
+    "category": "Security, Trust & Safety",
+    "summary": "Red teaming & evals at scale.",
+    "use_cases": ["Guardrails", "evals"],
+    "website": "https://scale.ai"
+  },
+  {
+    "id": 127,
+    "name": "Lakera",
+    "category": "Security, Trust & Safety",
+    "summary": "Prompt security and filtering.",
+    "use_cases": ["Injection defense"],
+    "website": "https://www.lakera.ai"
+  },
+  {
+    "id": 128,
+    "name": "HiddenLayer",
+    "category": "Security, Trust & Safety",
+    "summary": "Machine learning security.",
+    "use_cases": ["Model protection"],
+    "website": "https://hiddenlayer.com"
+  },
+  {
+    "id": 129,
+    "name": "Protect AI",
+    "category": "Security, Trust & Safety",
+    "summary": "ML supply-chain security.",
+    "use_cases": ["Scan", "monitor"],
+    "website": "https://protectai.com"
+  },
+  {
+    "id": 130,
+    "name": "Pinecone",
+    "category": "Data, RAG & MLOps",
+    "summary": "Managed vector database.",
+    "use_cases": ["RAG search", "retrieval"],
+    "website": "https://www.pinecone.io"
+  },
+  {
+    "id": 131,
+    "name": "Weaviate",
+    "category": "Data, RAG & MLOps",
+    "summary": "Vector DB with hybrid search.",
+    "use_cases": ["Semantic apps"],
+    "website": "https://weaviate.io"
+  },
+  {
+    "id": 132,
+    "name": "Milvus",
+    "category": "Data, RAG & MLOps",
+    "summary": "Open-source vector DB.",
+    "use_cases": ["Large-scale retrieval"],
+    "website": "https://milvus.io"
+  },
+  {
+    "id": 133,
+    "name": "Chroma",
+    "category": "Data, RAG & MLOps",
+    "summary": "Lightweight vector store.",
+    "use_cases": ["Prototyping RAG"],
+    "website": "https://www.trychroma.com"
+  },
+  {
+    "id": 134,
+    "name": "Qdrant",
+    "category": "Data, RAG & MLOps",
+    "summary": "Open-source vector engine.",
+    "use_cases": ["Prod retrieval"],
+    "website": "https://qdrant.tech"
+  },
+  {
+    "id": 135,
+    "name": "Elastic",
+    "category": "Data, RAG & MLOps",
+    "summary": "Elasticsearch + vectors.",
+    "use_cases": ["Enterprise RAG"],
+    "website": "https://www.elastic.co"
+  },
+  {
+    "id": 136,
+    "name": "Snowflake Cortex",
+    "category": "Data, RAG & MLOps",
+    "summary": "AI in the data cloud.",
+    "use_cases": ["RAG", "apps"],
+    "website": "https://www.snowflake.com"
+  },
+  {
+    "id": 137,
+    "name": "Databricks Mosaic",
+    "category": "Data, RAG & MLOps",
+    "summary": "Lakehouse AI stack.",
+    "use_cases": ["RAG", "training"],
+    "website": "https://databricks.com"
+  },
+  {
+    "id": 138,
+    "name": "Palantir AIP",
+    "category": "Geospatial & Gov/Defense",
+    "summary": "AI for operations and defense.",
+    "use_cases": ["Defense", "gov", "industry"],
+    "website": "https://www.palantir.com"
+  },
+  {
+    "id": 139,
+    "name": "Anduril",
+    "category": "Geospatial & Gov/Defense",
+    "summary": "Defense autonomy and sensing.",
+    "use_cases": ["ISR", "edge AI"],
+    "website": "https://anduril.com"
+  },
+  {
+    "id": 140,
+    "name": "Planet Labs",
+    "category": "Geospatial & Gov/Defense",
+    "summary": "Satellite data with AI.",
+    "use_cases": ["Monitoring", "ESG"],
+    "website": "https://www.planet.com"
+  },
+  {
+    "id": 141,
+    "name": "Blackshark.ai",
+    "category": "Geospatial & Gov/Defense",
+    "summary": "3D world reconstruction.",
+    "use_cases": ["Simulation", "mapping"],
+    "website": "https://www.blackshark.ai"
+  },
+  {
+    "id": 142,
+    "name": "Sight Machine",
+    "category": "Industrial/Manufacturing & IoT",
+    "summary": "Factory AI & analytics.",
+    "use_cases": ["Quality", "OEE"],
+    "website": "https://sightmachine.com"
+  },
+  {
+    "id": 143,
+    "name": "Falkonry",
+    "category": "Industrial/Manufacturing & IoT",
+    "summary": "Anomaly detection for industry.",
+    "use_cases": ["Predictive maintenance"],
+    "website": "https://falkonry.com"
+  },
+  {
+    "id": 144,
+    "name": "Uptake",
+    "category": "Industrial/Manufacturing & IoT",
+    "summary": "Industrial AI analytics.",
+    "use_cases": ["Fleet/asset health"],
+    "website": "https://uptake.com"
+  },
+  {
+    "id": 145,
+    "name": "Samsara",
+    "category": "Industrial/Manufacturing & IoT",
+    "summary": "IoT platform with AI features.",
+    "use_cases": ["Logistics", "safety"],
+    "website": "https://samsara.com"
+  },
+  {
+    "id": 146,
+    "name": "Blue River Technology",
+    "category": "Agriculture",
+    "summary": "See & Spray precision ag.",
+    "use_cases": ["Weed control", "vision"],
+    "website": "https://bluerivertechnology.com"
+  },
+  {
+    "id": 147,
+    "name": "Granular",
+    "category": "Agriculture",
+    "summary": "Farm management + AI.",
+    "use_cases": ["Yield", "ops"],
+    "website": "https://granular.ag"
+  },
+  {
+    "id": 148,
+    "name": "Ceres Imaging",
+    "category": "Agriculture",
+    "summary": "Aerial analytics for farms.",
+    "use_cases": ["Irrigation", "stress"],
+    "website": "https://www.ceresimaging.net"
+  },
+  {
+    "id": 149,
+    "name": "Kaedim",
+    "category": "Multimodal, 3D & Vision",
+    "summary": "2D to 3D assets with AI.",
+    "use_cases": ["Games", "design"],
+    "website": "https://www.kaedim3d.com"
+  },
+  {
+    "id": 150,
+    "name": "Tripo AI",
+    "category": "Multimodal, 3D & Vision",
+    "summary": "3D from single images.",
+    "use_cases": ["3D modeling"],
+    "website": "https://www.tripo3d.ai"
+  },
+  {
+    "id": 151,
+    "name": "Polycam (AI)",
+    "category": "Multimodal, 3D & Vision",
+    "summary": "Capture + AI processing.",
+    "use_cases": ["Scans", "meshes"],
+    "website": "https://polycam.ai"
+  },
+  {
+    "id": 152,
+    "name": "Llama (Meta)",
+    "category": "Open Source Projects",
+    "summary": "Open LLM family.",
+    "use_cases": ["Apps", "fine-tunes"],
+    "website": "https://llama.meta.com"
+  },
+  {
+    "id": 153,
+    "name": "Mixtral (Mistral)",
+    "category": "Open Source Projects",
+    "summary": "Sparse MoE open model.",
+    "use_cases": ["Efficient generation"],
+    "website": "https://mistral.ai"
+  },
+  {
+    "id": 154,
+    "name": "Whisper (OpenAI)",
+    "category": "Open Source Projects",
+    "summary": "Open STT model.",
+    "use_cases": ["Transcription"],
+    "website": "https://github.com/openai/whisper"
+  },
+  {
+    "id": 155,
+    "name": "Stable Diffusion",
+    "category": "Open Source Projects",
+    "summary": "Open image generation.",
+    "use_cases": ["Art", "assets"],
+    "website": "https://stability.ai"
+  },
+  {
+    "id": 156,
+    "name": "vLLM",
+    "category": "Open Source Projects",
+    "summary": "Fast LLM serving engine.",
+    "use_cases": ["Inference"],
+    "website": "https://vllm.ai"
+  },
+  {
+    "id": 157,
+    "name": "Ollama",
+    "category": "Open Source Projects",
+    "summary": "Local model runner.",
+    "use_cases": ["On-device dev"],
+    "website": "https://ollama.ai"
+  },
+  {
+    "id": 158,
+    "name": "OpenWebUI",
+    "category": "Open Source Projects",
+    "summary": "OSS chat UI.",
+    "use_cases": ["Local UIs"],
+    "website": "https://github.com/open-webui"
+  },
+  {
+    "id": 159,
+    "name": "LangChain",
+    "category": "Open Source Projects",
+    "summary": "Orchestration for agents.",
+    "use_cases": ["Tools", "agents"],
+    "website": "https://langchain.com"
+  },
+  {
+    "id": 160,
+    "name": "LlamaIndex",
+    "category": "Open Source Projects",
+    "summary": "Data→LLM framework.",
+    "use_cases": ["RAG pipelines"],
+    "website": "https://www.llamaindex.ai"
+  }
+]
+=======
+[
+  {
+    "id": 1,
+    "name": "OpenAI",
+    "category": "Foundation / General Models",
+    "summary": "Foundation models (GPT-4o/4.1, o3). Assistants API; multimodal.",
+    "use_cases": ["Chat", "agents", "RAG", "code", "speech"],
+    "website": "https://openai.com"
+  },
+  {
+    "id": 2,
+    "name": "Google DeepMind",
+    "category": "Foundation / General Models",
+    "summary": "Gemini family; multimodal; research-backed.",
+    "use_cases": ["Chat", "reasoning", "tools", "search infusion"],
+    "website": "https://deepmind.google"
+  },
+  {
+    "id": 3,
+    "name": "Anthropic",
+    "category": "Foundation / General Models",
+    "summary": "Claude models focused on safety and steerability.",
+    "use_cases": ["Assistants", "enterprise copilots"],
+    "website": "https://www.anthropic.com"
+  },
+  {
+    "id": 4,
+    "name": "Meta AI",
+    "category": "Foundation / General Models",
+    "summary": "Llama open models; research-first.",
+    "use_cases": ["Open-source LLMs", "fine-tuning"],
+    "website": "https://ai.meta.com"
+  },
+  {
+    "id": 5,
+    "name": "Mistral AI",
+    "category": "Foundation / General Models",
+    "summary": "Efficient open & hosted models (Mixtral).",
+    "use_cases": ["Lightweight LLMs", "local/edge"],
+    "website": "https://mistral.ai"
+  },
+  {
+    "id": 6,
+    "name": "Cohere",
+    "category": "Foundation / General Models",
+    "summary": "Enterprise language models & RAG platform.",
+    "use_cases": ["Search", "classify", "generate"],
+    "website": "https://cohere.com"
+  },
+  {
+    "id": 7,
+    "name": "xAI",
+    "category": "Foundation / General Models",
+    "summary": "Grok series models with real-time context.",
+    "use_cases": ["Real-time", "reasoning chat"],
+    "website": "https://x.ai"
+  },
+  {
+    "id": 8,
+    "name": "Alibaba Qwen",
+    "category": "Foundation / General Models",
+    "summary": "Qwen models; multilingual; open & hosted.",
+    "use_cases": ["Multilingual apps", "agents"],
+    "website": "https://qwenlm.ai"
+  },
+  {
+    "id": 9,
+    "name": "Huawei (PanGu)",
+    "category": "Foundation / General Models",
+    "summary": "Chinese-focused foundation models.",
+    "use_cases": ["Industry vertical copilots"],
+    "website": "https://www.huawei.com"
+  },
+  {
+    "id": 10,
+    "name": "Baidu ERNIE",
+    "category": "Foundation / General Models",
+    "summary": "Chinese LLM stack integrated with search.",
+    "use_cases": ["Search", "enterprise assistants"],
+    "website": "https://www.baidu.com"
+  },
+  {
+    "id": 11,
+    "name": "NVIDIA NIM",
+    "category": "Foundation / General Models",
+    "summary": "Inference microservices for top models.",
+    "use_cases": ["Deploy/optimize LLMs"],
+    "website": "https://www.nvidia.com/ai"
+  },
+  {
+    "id": 12,
+    "name": "Together AI",
+    "category": "Foundation / General Models",
+    "summary": "Hosted OSS models & efficient inference.",
+    "use_cases": ["Cost-efficient inference", "evals"],
+    "website": "https://www.together.ai"
+  },
+  {
+    "id": 13,
+    "name": "Perplexity",
+    "category": "Foundation / General Models",
+    "summary": "Answer engine plus proprietary models.",
+    "use_cases": ["Search Q&A with citations"],
+    "website": "https://www.perplexity.ai"
+  },
+  {
+    "id": 14,
+    "name": "Aleph Alpha",
+    "category": "Foundation / General Models",
+    "summary": "Sovereign EU-centric models for regulated sectors.",
+    "use_cases": ["On-prem/regulated deployments"],
+    "website": "https://www.aleph-alpha.com"
+  },
+  {
+    "id": 15,
+    "name": "Stability AI",
+    "category": "Foundation / General Models",
+    "summary": "Stable series for image/audio/video.",
+    "use_cases": ["Generative media"],
+    "website": "https://stability.ai"
+  },
+  {
+    "id": 16,
+    "name": "Microsoft Copilot",
+    "category": "Assistants & AI Search",
+    "summary": "Assistant across M365 and Bing.",
+    "use_cases": ["Writing", "code", "meetings"],
+    "website": "https://copilot.microsoft.com"
+  },
+  {
+    "id": 17,
+    "name": "You.com",
+    "category": "Assistants & AI Search",
+    "summary": "Private AI search and assistant.",
+    "use_cases": ["Research", "chat", "code"],
+    "website": "https://you.com"
+  },
+  {
+    "id": 18,
+    "name": "Phind",
+    "category": "Assistants & AI Search",
+    "summary": "Developer-focused AI search.",
+    "use_cases": ["Coding answers", "snippets"],
+    "website": "https://www.phind.com"
+  },
+  {
+    "id": 19,
+    "name": "Arc Search",
+    "category": "Assistants & AI Search",
+    "summary": "AI-enhanced mobile search.",
+    "use_cases": ["Summaries", "browse"],
+    "website": "https://arc.net"
+  },
+  {
+    "id": 20,
+    "name": "Brave Leo",
+    "category": "Assistants & AI Search",
+    "summary": "Private browser assistant in Brave.",
+    "use_cases": ["Page Q&A", "summaries"],
+    "website": "https://brave.com/leo"
+  },
+  {
+    "id": 21,
+    "name": "DuckDuckGo AI",
+    "category": "Assistants & AI Search",
+    "summary": "Private AI answers in search.",
+    "use_cases": ["Search Q&A"],
+    "website": "https://duckduckgo.com"
+  },
+  {
+    "id": 22,
+    "name": "Jasper",
+    "category": "Writing & Content",
+    "summary": "Marketing copilot with brand voice control.",
+    "use_cases": ["Blogs", "ads", "landing pages"],
+    "website": "https://www.jasper.ai"
+  },
+  {
+    "id": 23,
+    "name": "Copy.ai",
+    "category": "Writing & Content",
+    "summary": "Sales and marketing AI workflows.",
+    "use_cases": ["Sequences", "cold outreach"],
+    "website": "https://www.copy.ai"
+  },
+  {
+    "id": 24,
+    "name": "Writer.com",
+    "category": "Writing & Content",
+    "summary": "Enterprise writing guardrails & governance.",
+    "use_cases": ["Brand-safe content"],
+    "website": "https://writer.com"
+  },
+  {
+    "id": 25,
+    "name": "Notion AI",
+    "category": "Writing & Content",
+    "summary": "AI features embedded in Notion.",
+    "use_cases": ["Notes", "docs", "databases"],
+    "website": "https://www.notion.so"
+  },
+  {
+    "id": 26,
+    "name": "Grammarly",
+    "category": "Writing & Content",
+    "summary": "AI writing, tone and correctness.",
+    "use_cases": ["Editing", "rewrites"],
+    "website": "https://grammarly.com"
+  },
+  {
+    "id": 27,
+    "name": "Anyword",
+    "category": "Writing & Content",
+    "summary": "Conversion-focused content generation.",
+    "use_cases": ["Social", "ads", "landing pages"],
+    "website": "https://anyword.com"
+  },
+  {
+    "id": 28,
+    "name": "Descript",
+    "category": "Writing & Content",
+    "summary": "Text-based audio/video editing.",
+    "use_cases": ["Podcasts", "video clips"],
+    "website": "https://www.descript.com"
+  },
+  {
+    "id": 29,
+    "name": "QuillBot",
+    "category": "Writing & Content",
+    "summary": "Paraphrasing and summarization tools.",
+    "use_cases": ["Rewrites", "citations"],
+    "website": "https://quillbot.com"
+  },
+  {
+    "id": 30,
+    "name": "Midjourney",
+    "category": "Art, Design & Creative",
+    "summary": "High-quality text-to-image generation.",
+    "use_cases": ["Concept art", "design"],
+    "website": "https://www.midjourney.com"
+  },
+  {
+    "id": 31,
+    "name": "Adobe Firefly",
+    "category": "Art, Design & Creative",
+    "summary": "Generative features across Adobe CC.",
+    "use_cases": ["Image", "vector", "effects"],
+    "website": "https://www.adobe.com/firefly"
+  },
+  {
+    "id": 32,
+    "name": "Runway",
+    "category": "Art, Design & Creative",
+    "summary": "Generative video & advanced editing.",
+    "use_cases": ["SFX", "text-to-video"],
+    "website": "https://runwayml.com"
+  },
+  {
+    "id": 33,
+    "name": "Leonardo.ai",
+    "category": "Art, Design & Creative",
+    "summary": "Asset creation suite for designers.",
+    "use_cases": ["Game assets", "3D", "styles"],
+    "website": "https://leonardo.ai"
+  },
+  {
+    "id": 34,
+    "name": "Pika Labs",
+    "category": "Art, Design & Creative",
+    "summary": "Generative video platform.",
+    "use_cases": ["Shorts", "concepts"],
+    "website": "https://pika.art"
+  },
+  {
+    "id": 35,
+    "name": "KAIBER",
+    "category": "Art, Design & Creative",
+    "summary": "Music-video visuals.",
+    "use_cases": ["Artist visuals"],
+    "website": "https://www.kaiber.ai"
+  },
+  {
+    "id": 36,
+    "name": "Scenario",
+    "category": "Art, Design & Creative",
+    "summary": "Game asset generation.",
+    "use_cases": ["Characters", "props", "styles"],
+    "website": "https://www.scenario.com"
+  },
+  {
+    "id": 37,
+    "name": "OpenAI Sora (preview)",
+    "category": "Video & Generative Media",
+    "summary": "Text-to-video research model.",
+    "use_cases": ["Cinematic previsualization"],
+    "website": "https://openai.com"
+  },
+  {
+    "id": 38,
+    "name": "Synthesia",
+    "category": "Video & Generative Media",
+    "summary": "AI avatar & multilingual video.",
+    "use_cases": ["Training", "comms"],
+    "website": "https://www.synthesia.io"
+  },
+  {
+    "id": 39,
+    "name": "HeyGen",
+    "category": "Video & Generative Media",
+    "summary": "AI avatars and dubbing.",
+    "use_cases": ["Multilingual content"],
+    "website": "https://www.heygen.com"
+  },
+  {
+    "id": 40,
+    "name": "Colossyan",
+    "category": "Video & Generative Media",
+    "summary": "AI presenters for video.",
+    "use_cases": ["How-tos", "learning"],
+    "website": "https://www.colossyan.com"
+  },
+  {
+    "id": 41,
+    "name": "Luma AI",
+    "category": "Video & Generative Media",
+    "summary": "NeRFs & photoreal 3D capture.",
+    "use_cases": ["Product/scene capture"],
+    "website": "https://lumalabs.ai"
+  },
+  {
+    "id": 42,
+    "name": "ElevenLabs",
+    "category": "Audio, Speech & Voice",
+    "summary": "Voice cloning and high-quality TTS.",
+    "use_cases": ["Dubbing", "narration"],
+    "website": "https://elevenlabs.io"
+  },
+  {
+    "id": 43,
+    "name": "Play.ht",
+    "category": "Audio, Speech & Voice",
+    "summary": "Advanced TTS with many voices.",
+    "use_cases": ["Audiobooks", "apps"],
+    "website": "https://play.ht"
+  },
+  {
+    "id": 44,
+    "name": "Resemble.ai",
+    "category": "Audio, Speech & Voice",
+    "summary": "Voice AI stack including cloning.",
+    "use_cases": ["Dubbing", "IVR", "games"],
+    "website": "https://www.resemble.ai"
+  },
+  {
+    "id": 45,
+    "name": "Speechify",
+    "category": "Audio, Speech & Voice",
+    "summary": "TTS reader and learning aid.",
+    "use_cases": ["Accessibility", "study"],
+    "website": "https://speechify.com"
+  },
+  {
+    "id": 46,
+    "name": "Altered Studio",
+    "category": "Audio, Speech & Voice",
+    "summary": "AI voice acting for creators.",
+    "use_cases": ["Games", "media"],
+    "website": "https://www.altered.ai"
+  },
+  {
+    "id": 47,
+    "name": "Coqui",
+    "category": "Audio, Speech & Voice",
+    "summary": "Open-source voice models.",
+    "use_cases": ["Local TTS/STT"],
+    "website": "https://coqui.ai"
+  },
+  {
+    "id": 48,
+    "name": "OpenAI Whisper",
+    "category": "Audio, Speech & Voice",
+    "summary": "Open STT model for transcription.",
+    "use_cases": ["Captions", "transcripts"],
+    "website": "https://openai.com/research/whisper"
+  },
+  {
+    "id": 49,
+    "name": "GitHub Copilot",
+    "category": "Coding & Developer Tools",
+    "summary": "AI pair programmer in IDEs.",
+    "use_cases": ["Autocomplete", "code chat"],
+    "website": "https://github.com/features/copilot"
+  },
+  {
+    "id": 50,
+    "name": "Replit",
+    "category": "Coding & Developer Tools",
+    "summary": "AI coding workspace and agents.",
+    "use_cases": ["Code", "deploy", "host"],
+    "website": "https://replit.com"
+  },
+  {
+    "id": 51,
+    "name": "Cursor",
+    "category": "Coding & Developer Tools",
+    "summary": "AI-powered code editor.",
+    "use_cases": ["Refactors", "code chat"],
+    "website": "https://cursor.sh"
+  },
+  {
+    "id": 52,
+    "name": "Codeium",
+    "category": "Coding & Developer Tools",
+    "summary": "Free AI coding assistant.",
+    "use_cases": ["Completion", "chat"],
+    "website": "https://codeium.com"
+  },
+  {
+    "id": 53,
+    "name": "Tabnine",
+    "category": "Coding & Developer Tools",
+    "summary": "On-prem/private code models.",
+    "use_cases": ["Private completion"],
+    "website": "https://www.tabnine.com"
+  },
+  {
+    "id": 54,
+    "name": "Sourcegraph Cody",
+    "category": "Coding & Developer Tools",
+    "summary": "Codebase-aware assistant.",
+    "use_cases": ["Search", "context", "chat"],
+    "website": "https://sourcegraph.com/cody"
+  },
+  {
+    "id": 55,
+    "name": "Continue.dev",
+    "category": "Coding & Developer Tools",
+    "summary": "OSS IDE assistant.",
+    "use_cases": ["VS Code/JetBrains"],
+    "website": "https://continue.dev"
+  },
+  {
+    "id": 56,
+    "name": "JetBrains AI",
+    "category": "Coding & Developer Tools",
+    "summary": "AI features across JetBrains IDEs.",
+    "use_cases": ["Code", "docs", "search"],
+    "website": "https://www.jetbrains.com/ai"
+  },
+  {
+    "id": 57,
+    "name": "LangChain",
+    "category": "Coding & Developer Tools",
+    "summary": "Agentic orchestration framework.",
+    "use_cases": ["Tools", "agents", "RAG"],
+    "website": "https://langchain.com"
+  },
+  {
+    "id": 58,
+    "name": "LlamaIndex",
+    "category": "Coding & Developer Tools",
+    "summary": "Data framework for LLMs.",
+    "use_cases": ["RAG pipelines"],
+    "website": "https://www.llamaindex.ai"
+  },
+  {
+    "id": 59,
+    "name": "Modal",
+    "category": "Coding & Developer Tools",
+    "summary": "Serverless infra for AI workloads.",
+    "use_cases": ["Jobs", "inference"],
+    "website": "https://modal.com"
+  },
+  {
+    "id": 60,
+    "name": "Vercel AI",
+    "category": "Coding & Developer Tools",
+    "summary": "AI SDKs + hosting.",
+    "use_cases": ["Web AI apps"],
+    "website": "https://vercel.com/ai"
+  },
+  {
+    "id": 61,
+    "name": "Hugging Face",
+    "category": "Coding & Developer Tools",
+    "summary": "Models/datasets hub & Inference.",
+    "use_cases": ["Model hosting", "Spaces"],
+    "website": "https://huggingface.co"
+  },
+  {
+    "id": 62,
+    "name": "Otter.ai",
+    "category": "Business Productivity & Meetings",
+    "summary": "Meeting transcription and notes.",
+    "use_cases": ["Summaries", "action items"],
+    "website": "https://otter.ai"
+  },
+  {
+    "id": 63,
+    "name": "Fireflies",
+    "category": "Business Productivity & Meetings",
+    "summary": "AI for calls/meetings.",
+    "use_cases": ["Notes", "tasks"],
+    "website": "https://fireflies.ai"
+  },
+  {
+    "id": 64,
+    "name": "Supernormal",
+    "category": "Business Productivity & Meetings",
+    "summary": "Automated meeting minutes.",
+    "use_cases": ["Briefs", "summaries"],
+    "website": "https://supernormal.com"
+  },
+  {
+    "id": 65,
+    "name": "Fathom",
+    "category": "Business Productivity & Meetings",
+    "summary": "Free meeting recorder.",
+    "use_cases": ["Summaries", "CRM notes"],
+    "website": "https://fathom.video"
+  },
+  {
+    "id": 66,
+    "name": "Rewind AI",
+    "category": "Business Productivity & Meetings",
+    "summary": "Local-first personal memory.",
+    "use_cases": ["Recall", "search"],
+    "website": "https://www.rewind.ai"
+  },
+  {
+    "id": 67,
+    "name": "Adept AI",
+    "category": "Business Productivity & Meetings",
+    "summary": "Action models for software UIs.",
+    "use_cases": ["UI automation"],
+    "website": "https://www.adept.ai"
+  },
+  {
+    "id": 68,
+    "name": "Magical",
+    "category": "Business Productivity & Meetings",
+    "summary": "Workflow macros for teams.",
+    "use_cases": ["Sales/admin automations"],
+    "website": "https://www.getmagical.com"
+  },
+  {
+    "id": 69,
+    "name": "HubSpot AI",
+    "category": "Sales, Marketing & Support",
+    "summary": "AI across HubSpot CRM.",
+    "use_cases": ["Sequences", "content"],
+    "website": "https://hubspot.com"
+  },
+  {
+    "id": 70,
+    "name": "Drift",
+    "category": "Sales, Marketing & Support",
+    "summary": "Conversational marketing AI.",
+    "use_cases": ["Lead chat", "routing"],
+    "website": "https://www.drift.com"
+  },
+  {
+    "id": 71,
+    "name": "Intercom Fin",
+    "category": "Sales, Marketing & Support",
+    "summary": "AI support bot.",
+    "use_cases": ["Triage", "auto-answers"],
+    "website": "https://www.intercom.com"
+  },
+  {
+    "id": 72,
+    "name": "Zendesk AI",
+    "category": "Sales, Marketing & Support",
+    "summary": "AI features for support.",
+    "use_cases": ["Macros", "bots", "assist"],
+    "website": "https://www.zendesk.com"
+  },
+  {
+    "id": 73,
+    "name": "Ada",
+    "category": "Sales, Marketing & Support",
+    "summary": "CX automation platform.",
+    "use_cases": ["Deflection", "handoff"],
+    "website": "https://www.ada.cx"
+  },
+  {
+    "id": 74,
+    "name": "Forethought",
+    "category": "Sales, Marketing & Support",
+    "summary": "Support copilots.",
+    "use_cases": ["Agent assist", "answers"],
+    "website": "https://forethought.ai"
+  },
+  {
+    "id": 75,
+    "name": "Moveworks",
+    "category": "Sales, Marketing & Support",
+    "summary": "Internal support AI.",
+    "use_cases": ["IT/HR automation"],
+    "website": "https://www.moveworks.com"
+  },
+  {
+    "id": 76,
+    "name": "Khanmigo",
+    "category": "Education & Research",
+    "summary": "AI tutor by Khan Academy.",
+    "use_cases": ["Guided learning"],
+    "website": "https://www.khanacademy.org"
+  },
+  {
+    "id": 77,
+    "name": "Elicit",
+    "category": "Education & Research",
+    "summary": "Research assistant for papers.",
+    "use_cases": ["Discovery", "syntheses"],
+    "website": "https://elicit.org"
+  },
+  {
+    "id": 78,
+    "name": "Perplexity EDU",
+    "category": "Education & Research",
+    "summary": "Student-friendly Q&A with sources.",
+    "use_cases": ["Research with citations"],
+    "website": "https://www.perplexity.ai"
+  },
+  {
+    "id": 79,
+    "name": "Gradescope",
+    "category": "Education & Research",
+    "summary": "AI-assisted grading.",
+    "use_cases": ["Rubrics", "feedback"],
+    "website": "https://www.gradescope.com"
+  },
+  {
+    "id": 80,
+    "name": "Socratic",
+    "category": "Education & Research",
+    "summary": "Homework helper by Google.",
+    "use_cases": ["Step-by-step help"],
+    "website": "https://socratic.org"
+  },
+  {
+    "id": 81,
+    "name": "Consensus",
+    "category": "Education & Research",
+    "summary": "Evidence-based Q&A from papers.",
+    "use_cases": ["Literature summaries"],
+    "website": "https://consensus.app"
+  },
+  {
+    "id": 82,
+    "name": "Scite",
+    "category": "Education & Research",
+    "summary": "Smart citations and evidence graphs.",
+    "use_cases": ["Citation analysis"],
+    "website": "https://scite.ai"
+  },
+  {
+    "id": 83,
+    "name": "Insilico Medicine",
+    "category": "Healthcare & Biotech",
+    "summary": "End-to-end AI drug discovery.",
+    "use_cases": ["Target ID", "design"],
+    "website": "https://insilico.com"
+  },
+  {
+    "id": 84,
+    "name": "Atomwise",
+    "category": "Healthcare & Biotech",
+    "summary": "Small-molecule discovery with AI.",
+    "use_cases": ["Virtual screening"],
+    "website": "https://atomwise.com"
+  },
+  {
+    "id": 85,
+    "name": "Recursion",
+    "category": "Healthcare & Biotech",
+    "summary": "Phenotypic data + ML platforms.",
+    "use_cases": ["Discovery", "insights"],
+    "website": "https://www.recursion.com"
+  },
+  {
+    "id": 86,
+    "name": "DeepMind Health",
+    "category": "Healthcare & Biotech",
+    "summary": "Medical AI research outputs.",
+    "use_cases": ["Imaging", "protein"],
+    "website": "https://deepmind.google"
+  },
+  {
+    "id": 87,
+    "name": "Hippocratic",
+    "category": "Healthcare & Biotech",
+    "summary": "Safety-first medical AI.",
+    "use_cases": ["Clinical copilots"],
+    "website": "https://www.hippocratic.ai"
+  },
+  {
+    "id": 88,
+    "name": "Nabla",
+    "category": "Healthcare & Biotech",
+    "summary": "Doctor copilot for notes.",
+    "use_cases": ["Clinical docs", "claims"],
+    "website": "https://www.nabla.com"
+  },
+  {
+    "id": 89,
+    "name": "Kensho (S&P)",
+    "category": "Finance & Fintech",
+    "summary": "Financial AI for events/entities.",
+    "use_cases": ["Analytics", "NLP"],
+    "website": "https://www.spglobal.com/kensho"
+  },
+  {
+    "id": 90,
+    "name": "Numerai",
+    "category": "Finance & Fintech",
+    "summary": "Crowd-sourced modeling tournament.",
+    "use_cases": ["Signals", "hedge fund"],
+    "website": "https://numer.ai"
+  },
+  {
+    "id": 91,
+    "name": "Upstart",
+    "category": "Finance & Fintech",
+    "summary": "AI-enabled lending decisions.",
+    "use_cases": ["Credit underwriting"],
+    "website": "https://www.upstart.com"
+  },
+  {
+    "id": 92,
+    "name": "Zest AI",
+    "category": "Finance & Fintech",
+    "summary": "Risk modeling for lending.",
+    "use_cases": ["Underwriting"],
+    "website": "https://www.zest.ai"
+  },
+  {
+    "id": 93,
+    "name": "Databricks",
+    "category": "Finance & Fintech",
+    "summary": "Lakehouse with AI/ML tooling.",
+    "use_cases": ["Risk", "fraud", "RAG"],
+    "website": "https://databricks.com"
+  },
+  {
+    "id": 94,
+    "name": "Abacus.AI",
+    "category": "Finance & Fintech",
+    "summary": "Real-time AI pipelines.",
+    "use_cases": ["Forecasting", "fraud"],
+    "website": "https://www.abacus.ai"
+  },
+  {
+    "id": 95,
+    "name": "Harvey",
+    "category": "Legal & Compliance",
+    "summary": "AI for global law firms.",
+    "use_cases": ["Drafts", "research"],
+    "website": "https://www.harvey.ai"
+  },
+  {
+    "id": 96,
+    "name": "Casetext (CoCounsel)",
+    "category": "Legal & Compliance",
+    "summary": "Legal research copilot.",
+    "use_cases": ["Briefs", "memos"],
+    "website": "https://casetext.com"
+  },
+  {
+    "id": 97,
+    "name": "Spellbook",
+    "category": "Legal & Compliance",
+    "summary": "Contracts AI in Word/CLM.",
+    "use_cases": ["Draft/review"],
+    "website": "https://www.spellbook.legal"
+  },
+  {
+    "id": 98,
+    "name": "EvenUp",
+    "category": "Legal & Compliance",
+    "summary": "Injury law automation.",
+    "use_cases": ["Demand letters"],
+    "website": "https://www.evenuplaw.com"
+  },
+  {
+    "id": 99,
+    "name": "Klarity",
+    "category": "Legal & Compliance",
+    "summary": "Contract review with playbooks.",
+    "use_cases": ["Risk checks"],
+    "website": "https://www.getklarity.com"
+  },
+  {
+    "id": 100,
+    "name": "Eightfold.ai",
+    "category": "HR & Recruiting",
+    "summary": "Talent intelligence platform.",
+    "use_cases": ["Match", "mobility"],
+    "website": "https://eightfold.ai"
+  },
+  {
+    "id": 101,
+    "name": "HireVue",
+    "category": "HR & Recruiting",
+    "summary": "Video + AI hiring tools.",
+    "use_cases": ["Screening", "chat"],
+    "website": "https://www.hirevue.com"
+  },
+  {
+    "id": 102,
+    "name": "Paradox",
+    "category": "HR & Recruiting",
+    "summary": "Recruiting assistant (Olivia).",
+    "use_cases": ["Scheduling", "chat"],
+    "website": "https://www.paradox.ai"
+  },
+  {
+    "id": 103,
+    "name": "Ashby",
+    "category": "HR & Recruiting",
+    "summary": "Modern recruiting suite.",
+    "use_cases": ["Sourcing", "analytics"],
+    "website": "https://www.ashbyhq.com"
+  },
+  {
+    "id": 104,
+    "name": "SeekOut",
+    "category": "HR & Recruiting",
+    "summary": "AI talent search platform.",
+    "use_cases": ["Sourcing", "CRM"],
+    "website": "https://www.seekout.com"
+  },
+  {
+    "id": 105,
+    "name": "Shopify Magic",
+    "category": "E-commerce & Retail",
+    "summary": "AI features across Shopify.",
+    "use_cases": ["Descriptions", "chat"],
+    "website": "https://www.shopify.com"
+  },
+  {
+    "id": 106,
+    "name": "Attentive",
+    "category": "E-commerce & Retail",
+    "summary": "SMS marketing with AI.",
+    "use_cases": ["Personalized SMS"],
+    "website": "https://attentive.com"
+  },
+  {
+    "id": 107,
+    "name": "Algolia AI",
+    "category": "E-commerce & Retail",
+    "summary": "Search with vectors & hybrid.",
+    "use_cases": ["Product discovery"],
+    "website": "https://www.algolia.com"
+  },
+  {
+    "id": 108,
+    "name": "Nosto",
+    "category": "E-commerce & Retail",
+    "summary": "Personalization for retail.",
+    "use_cases": ["Recommendations"],
+    "website": "https://www.nosto.com"
+  },
+  {
+    "id": 109,
+    "name": "Inworld AI",
+    "category": "Gaming & Interactive",
+    "summary": "NPC brains for games/sims.",
+    "use_cases": ["Dialogue", "behavior"],
+    "website": "https://inworld.ai"
+  },
+  {
+    "id": 110,
+    "name": "Convai",
+    "category": "Gaming & Interactive",
+    "summary": "Real-time voice NPCs.",
+    "use_cases": ["Game/3D agents"],
+    "website": "https://convai.com"
+  },
+  {
+    "id": 111,
+    "name": "Latitude (AI Dungeon)",
+    "category": "Gaming & Interactive",
+    "summary": "AI story worlds & tools.",
+    "use_cases": ["Narrative games"],
+    "website": "https://latitude.io"
+  },
+  {
+    "id": 112,
+    "name": "Scenario",
+    "category": "Gaming & Interactive",
+    "summary": "Game asset generation.",
+    "use_cases": ["Assets", "styles"],
+    "website": "https://www.scenario.com"
+  },
+  {
+    "id": 113,
+    "name": "Altered Studio",
+    "category": "Gaming & Interactive",
+    "summary": "AI voice acting.",
+    "use_cases": ["Characters VO"],
+    "website": "https://www.altered.ai"
+  },
+  {
+    "id": 114,
+    "name": "Figure AI",
+    "category": "Robotics, Industrial & Edge",
+    "summary": "Humanoid robots with AI.",
+    "use_cases": ["Manipulation tasks"],
+    "website": "https://www.figure.ai"
+  },
+  {
+    "id": 115,
+    "name": "Covariant",
+    "category": "Robotics, Industrial & Edge",
+    "summary": "Robot brains for logistics.",
+    "use_cases": ["Pick/pack", "vision"],
+    "website": "https://covariant.ai"
+  },
+  {
+    "id": 116,
+    "name": "Boston Dynamics",
+    "category": "Robotics, Industrial & Edge",
+    "summary": "Robotics & mobility R&D.",
+    "use_cases": ["Inspection", "mobility"],
+    "website": "https://www.bostondynamics.com"
+  },
+  {
+    "id": 117,
+    "name": "Intrinsic (Alphabet)",
+    "category": "Robotics, Industrial & Edge",
+    "summary": "Robot software platform.",
+    "use_cases": ["Programming tools"],
+    "website": "https://intrinsic.ai"
+  },
+  {
+    "id": 118,
+    "name": "OpenVINO (Intel)",
+    "category": "Robotics, Industrial & Edge",
+    "summary": "Edge inference toolkit.",
+    "use_cases": ["On-device vision"],
+    "website": "https://www.intel.com/openvino"
+  },
+  {
+    "id": 119,
+    "name": "OctoML",
+    "category": "Robotics, Industrial & Edge",
+    "summary": "Model optimization and serving.",
+    "use_cases": ["Cost/perf tuning"],
+    "website": "https://octoml.ai"
+  },
+  {
+    "id": 120,
+    "name": "ClimateAI",
+    "category": "Sustainability & Climate",
+    "summary": "Forecasting & risk analytics.",
+    "use_cases": ["Supply chain climate"],
+    "website": "https://climate.ai"
+  },
+  {
+    "id": 121,
+    "name": "Tomorrow.io",
+    "category": "Sustainability & Climate",
+    "summary": "Weather AI & APIs.",
+    "use_cases": ["Aviation", "logistics"],
+    "website": "https://www.tomorrow.io"
+  },
+  {
+    "id": 122,
+    "name": "Descartes Labs",
+    "category": "Sustainability & Climate",
+    "summary": "Geospatial analytics.",
+    "use_cases": ["Monitoring", "agri"],
+    "website": "https://www.descarteslabs.com"
+  },
+  {
+    "id": 123,
+    "name": "Pachama",
+    "category": "Sustainability & Climate",
+    "summary": "Forest monitoring & MRV.",
+    "use_cases": ["Carbon projects"],
+    "website": "https://pachama.com"
+  },
+  {
+    "id": 124,
+    "name": "Watershed",
+    "category": "Sustainability & Climate",
+    "summary": "Carbon management suite.",
+    "use_cases": ["Reporting", "reductions"],
+    "website": "https://watershed.com"
+  },
+  {
+    "id": 125,
+    "name": "OpenAI Safety Systems",
+    "category": "Security, Trust & Safety",
+    "summary": "Safety tooling and evals.",
+    "use_cases": ["Moderation", "red teaming"],
+    "website": "https://openai.com"
+  },
+  {
+    "id": 126,
+    "name": "Scale AI (Safety)",
+    "category": "Security, Trust & Safety",
+    "summary": "Red teaming & evals at scale.",
+    "use_cases": ["Guardrails", "evals"],
+    "website": "https://scale.ai"
+  },
+  {
+    "id": 127,
+    "name": "Lakera",
+    "category": "Security, Trust & Safety",
+    "summary": "Prompt security and filtering.",
+    "use_cases": ["Injection defense"],
+    "website": "https://www.lakera.ai"
+  },
+  {
+    "id": 128,
+    "name": "HiddenLayer",
+    "category": "Security, Trust & Safety",
+    "summary": "Machine learning security.",
+    "use_cases": ["Model protection"],
+    "website": "https://hiddenlayer.com"
+  },
+  {
+    "id": 129,
+    "name": "Protect AI",
+    "category": "Security, Trust & Safety",
+    "summary": "ML supply-chain security.",
+    "use_cases": ["Scan", "monitor"],
+    "website": "https://protectai.com"
+  },
+  {
+    "id": 130,
+    "name": "Pinecone",
+    "category": "Data, RAG & MLOps",
+    "summary": "Managed vector database.",
+    "use_cases": ["RAG search", "retrieval"],
+    "website": "https://www.pinecone.io"
+  },
+  {
+    "id": 131,
+    "name": "Weaviate",
+    "category": "Data, RAG & MLOps",
+    "summary": "Vector DB with hybrid search.",
+    "use_cases": ["Semantic apps"],
+    "website": "https://weaviate.io"
+  },
+  {
+    "id": 132,
+    "name": "Milvus",
+    "category": "Data, RAG & MLOps",
+    "summary": "Open-source vector DB.",
+    "use_cases": ["Large-scale retrieval"],
+    "website": "https://milvus.io"
+  },
+  {
+    "id": 133,
+    "name": "Chroma",
+    "category": "Data, RAG & MLOps",
+    "summary": "Lightweight vector store.",
+    "use_cases": ["Prototyping RAG"],
+    "website": "https://www.trychroma.com"
+  },
+  {
+    "id": 134,
+    "name": "Qdrant",
+    "category": "Data, RAG & MLOps",
+    "summary": "Open-source vector engine.",
+    "use_cases": ["Prod retrieval"],
+    "website": "https://qdrant.tech"
+  },
+  {
+    "id": 135,
+    "name": "Elastic",
+    "category": "Data, RAG & MLOps",
+    "summary": "Elasticsearch + vectors.",
+    "use_cases": ["Enterprise RAG"],
+    "website": "https://www.elastic.co"
+  },
+  {
+    "id": 136,
+    "name": "Snowflake Cortex",
+    "category": "Data, RAG & MLOps",
+    "summary": "AI in the data cloud.",
+    "use_cases": ["RAG", "apps"],
+    "website": "https://www.snowflake.com"
+  },
+  {
+    "id": 137,
+    "name": "Databricks Mosaic",
+    "category": "Data, RAG & MLOps",
+    "summary": "Lakehouse AI stack.",
+    "use_cases": ["RAG", "training"],
+    "website": "https://databricks.com"
+  },
+  {
+    "id": 138,
+    "name": "Palantir AIP",
+    "category": "Geospatial & Gov/Defense",
+    "summary": "AI for operations and defense.",
+    "use_cases": ["Defense", "gov", "industry"],
+    "website": "https://www.palantir.com"
+  },
+  {
+    "id": 139,
+    "name": "Anduril",
+    "category": "Geospatial & Gov/Defense",
+    "summary": "Defense autonomy and sensing.",
+    "use_cases": ["ISR", "edge AI"],
+    "website": "https://anduril.com"
+  },
+  {
+    "id": 140,
+    "name": "Planet Labs",
+    "category": "Geospatial & Gov/Defense",
+    "summary": "Satellite data with AI.",
+    "use_cases": ["Monitoring", "ESG"],
+    "website": "https://www.planet.com"
+  },
+  {
+    "id": 141,
+    "name": "Blackshark.ai",
+    "category": "Geospatial & Gov/Defense",
+    "summary": "3D world reconstruction.",
+    "use_cases": ["Simulation", "mapping"],
+    "website": "https://www.blackshark.ai"
+  },
+  {
+    "id": 142,
+    "name": "Sight Machine",
+    "category": "Industrial/Manufacturing & IoT",
+    "summary": "Factory AI & analytics.",
+    "use_cases": ["Quality", "OEE"],
+    "website": "https://sightmachine.com"
+  },
+  {
+    "id": 143,
+    "name": "Falkonry",
+    "category": "Industrial/Manufacturing & IoT",
+    "summary": "Anomaly detection for industry.",
+    "use_cases": ["Predictive maintenance"],
+    "website": "https://falkonry.com"
+  },
+  {
+    "id": 144,
+    "name": "Uptake",
+    "category": "Industrial/Manufacturing & IoT",
+    "summary": "Industrial AI analytics.",
+    "use_cases": ["Fleet/asset health"],
+    "website": "https://uptake.com"
+  },
+  {
+    "id": 145,
+    "name": "Samsara",
+    "category": "Industrial/Manufacturing & IoT",
+    "summary": "IoT platform with AI features.",
+    "use_cases": ["Logistics", "safety"],
+    "website": "https://samsara.com"
+  },
+  {
+    "id": 146,
+    "name": "Blue River Technology",
+    "category": "Agriculture",
+    "summary": "See & Spray precision ag.",
+    "use_cases": ["Weed control", "vision"],
+    "website": "https://bluerivertechnology.com"
+  },
+  {
+    "id": 147,
+    "name": "Granular",
+    "category": "Agriculture",
+    "summary": "Farm management + AI.",
+    "use_cases": ["Yield", "ops"],
+    "website": "https://granular.ag"
+  },
+  {
+    "id": 148,
+    "name": "Ceres Imaging",
+    "category": "Agriculture",
+    "summary": "Aerial analytics for farms.",
+    "use_cases": ["Irrigation", "stress"],
+    "website": "https://www.ceresimaging.net"
+  },
+  {
+    "id": 149,
+    "name": "Kaedim",
+    "category": "Multimodal, 3D & Vision",
+    "summary": "2D to 3D assets with AI.",
+    "use_cases": ["Games", "design"],
+    "website": "https://www.kaedim3d.com"
+  },
+  {
+    "id": 150,
+    "name": "Tripo AI",
+    "category": "Multimodal, 3D & Vision",
+    "summary": "3D from single images.",
+    "use_cases": ["3D modeling"],
+    "website": "https://www.tripo3d.ai"
+  },
+  {
+    "id": 151,
+    "name": "Polycam (AI)",
+    "category": "Multimodal, 3D & Vision",
+    "summary": "Capture + AI processing.",
+    "use_cases": ["Scans", "meshes"],
+    "website": "https://polycam.ai"
+  },
+  {
+    "id": 152,
+    "name": "Llama (Meta)",
+    "category": "Open Source Projects",
+    "summary": "Open LLM family.",
+    "use_cases": ["Apps", "fine-tunes"],
+    "website": "https://llama.meta.com"
+  },
+  {
+    "id": 153,
+    "name": "Mixtral (Mistral)",
+    "category": "Open Source Projects",
+    "summary": "Sparse MoE open model.",
+    "use_cases": ["Efficient generation"],
+    "website": "https://mistral.ai"
+  },
+  {
+    "id": 154,
+    "name": "Whisper (OpenAI)",
+    "category": "Open Source Projects",
+    "summary": "Open STT model.",
+    "use_cases": ["Transcription"],
+    "website": "https://github.com/openai/whisper"
+  },
+  {
+    "id": 155,
+    "name": "Stable Diffusion",
+    "category": "Open Source Projects",
+    "summary": "Open image generation.",
+    "use_cases": ["Art", "assets"],
+    "website": "https://stability.ai"
+  },
+  {
+    "id": 156,
+    "name": "vLLM",
+    "category": "Open Source Projects",
+    "summary": "Fast LLM serving engine.",
+    "use_cases": ["Inference"],
+    "website": "https://vllm.ai"
+  },
+  {
+    "id": 157,
+    "name": "Ollama",
+    "category": "Open Source Projects",
+    "summary": "Local model runner.",
+    "use_cases": ["On-device dev"],
+    "website": "https://ollama.ai"
+  },
+  {
+    "id": 158,
+    "name": "OpenWebUI",
+    "category": "Open Source Projects",
+    "summary": "OSS chat UI.",
+    "use_cases": ["Local UIs"],
+    "website": "https://github.com/open-webui"
+  },
+  {
+    "id": 159,
+    "name": "LangChain",
+    "category": "Open Source Projects",
+    "summary": "Orchestration for agents.",
+    "use_cases": ["Tools", "agents"],
+    "website": "https://langchain.com"
+  },
+  {
+    "id": 160,
+    "name": "LlamaIndex",
+    "category": "Open Source Projects",
+    "summary": "Data→LLM framework.",
+    "use_cases": ["RAG pipelines"],
+    "website": "https://www.llamaindex.ai"
+  }
+]
+>>>>>>> 5b97603 (Update backend files)

@@ -30,6 +30,7 @@ console.log(`OpenAI:   ${present("OPENAI_API_KEY")}`);
 console.log(`Mistral:  ${present("MISTRAL_API_KEY")}`);
 console.log(`Gemini:   ${present("GEMINI_API_KEY")}`);
 console.log(`Groq:     ${present("GROQ_API_KEY")}`);
+console.log(`DeepSeek:     ${present("DEEPSEEK_API_KEY")}`);
 
 // -----------------------------------------------------------------------------
 // Health & root
@@ -93,26 +94,6 @@ async function askMistral(prompt) {
   }
 }
 
-async function askGemini(prompt) {
-  try {
-    if (!process.env.GEMINI_API_KEY) {
-      return { provider: "Gemini", text: "Gemini placeholder response (no API key set)" };
-    }
-    const model = process.env.GEMINI_MODEL || "gemini-1.5-flash";
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`;
-    const r = await axios.post(
-      url,
-      { contents: [{ parts: [{ text: prompt }] }] },
-      { headers: { "x-goog-api-key": process.env.GEMINI_API_KEY }, timeout: 20000 }
-    );
-    const text = r.data?.candidates?.[0]?.content?.parts?.[0]?.text?.trim() ?? "No content returned.";
-    return { provider: "Gemini", text };
-  } catch (e) {
-    const msg = e?.response?.data?.error?.message || e?.response?.data?.message || e?.message || "Unknown error";
-    return { provider: "Gemini", text: mapFriendlyError(msg) };
-  }
-}
-
 async function askGroq(prompt) {
   try {
     if (!process.env.GROQ_API_KEY) {
@@ -152,6 +133,48 @@ async function askGroq(prompt) {
   } catch (e) {
     const msg = e?.response?.data?.error?.message || e?.message || "Unknown error";
     return { provider: "Groq", text: mapFriendlyError(msg) };
+  }
+}
+
+async function askDeepSeek(prompt) {
+  try {
+    if (!process.env.DEEPSEEK_API_KEY) {
+      return { provider: "DeepSeek", text: "DeepSeek placeholder response (no API key set)" };
+    }
+    const model = process.env.DEEPSEEK_MODEL || "deepseek-chat";
+    const r = await axios.post(
+      "https://api.deepseek.com/v1/chat/completions",
+      { model, messages: [{ role: "user", content: prompt }], temperature: 0.7 },
+      { headers: { Authorization: `Bearer ${process.env.DEEPSEEK_API_KEY}` }, timeout: 20000 }
+    );
+    const text =
+      r.data?.choices?.[0]?.message?.content?.trim() ??
+      r.data?.choices?.[0]?.text?.trim() ??
+      "No content returned.";
+    return { provider: "DeepSeek", text };
+  } catch (e) {
+    const msg = e?.response?.data?.error?.message || e?.message || "Unknown error";
+    return { provider: "DeepSeek", text: mapFriendlyError(msg) };
+  }
+}
+
+async function askGemini(prompt) {
+  try {
+    if (!process.env.GEMINI_API_KEY) {
+      return { provider: "Gemini", text: "Gemini placeholder response (no API key set)" };
+    }
+    const model = process.env.GEMINI_MODEL || "gemini-1.5-flash";
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`;
+    const r = await axios.post(
+      url,
+      { contents: [{ parts: [{ text: prompt }] }] },
+      { headers: { "x-goog-api-key": process.env.GEMINI_API_KEY }, timeout: 20000 }
+    );
+    const text = r.data?.candidates?.[0]?.content?.parts?.[0]?.text?.trim() ?? "No content returned.";
+    return { provider: "Gemini", text };
+  } catch (e) {
+    const msg = e?.response?.data?.error?.message || e?.response?.data?.message || e?.message || "Unknown error";
+    return { provider: "Gemini", text: mapFriendlyError(msg) };
   }
 }
 
@@ -261,8 +284,10 @@ app.post("/ask", async (req, res) => {
   const jobs = [
     ["OpenAI",  () => askOpenAI(prompt)],
     ["Mistral", () => askMistral(prompt)],
-    ["Gemini",  () => askGemini(prompt)],
     ["Groq",    () => askGroq(prompt)],
+    ["DeepSeek",    () => askDeepSeek(prompt)],
+    ["Gemini",  () => askGemini(prompt)],
+    
   ];
   const settled = await Promise.allSettled(jobs.map(([_, fn]) => fn()));
   const answers = settled.map((r, i) => {
