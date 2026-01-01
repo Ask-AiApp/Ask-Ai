@@ -73,11 +73,15 @@ const bedrock =
 async function askBedrockClaudeSonnet(prompt) {
   try {
     if (!bedrock) {
-      return { provider: "Bedrock Claude Sonnet", text: "Bedrock placeholder response (no AWS credentials set)" };
+      return {
+        provider: "Bedrock Claude Sonnet",
+        text: "Bedrock not configured (missing AWS credentials).",
+      };
     }
 
     const modelId =
-      process.env.BEDROCK_CLAUDE_SONNET_MODEL_ID || "anthropic.claude-3-sonnet-20240229-v1:0";
+      process.env.BEDROCK_CLAUDE_SONNET_MODEL_ID ||
+      "anthropic.claude-3-sonnet-20240229-v1:0";
 
     const body = {
       anthropic_version: "bedrock-2023-05-31",
@@ -96,10 +100,16 @@ async function askBedrockClaudeSonnet(prompt) {
     const res = await bedrock.send(cmd);
     const json = JSON.parse(new TextDecoder().decode(res.body));
 
-    const text = json?.content?.[0]?.text?.trim() ?? "No content returned.";
+    const text =
+      json?.content?.[0]?.text?.trim() ?? "No content returned.";
+
     return { provider: "Bedrock Claude Sonnet", text };
   } catch (e) {
-    return { provider: "Bedrock Claude Sonnet", text: mapFriendlyError(e?.message) };
+    console.error("BEDROCK_INVOKE_ERROR", e);
+    return {
+      provider: "Bedrock Claude Sonnet",
+      text: mapFriendlyError(e?.message),
+    };
   }
 }
 
