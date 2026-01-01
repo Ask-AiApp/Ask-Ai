@@ -7,6 +7,9 @@ import path from "path";
 import fs from "fs/promises";
 import { fileURLToPath } from "url";
 
+// ✅ Bedrock Runtime SDK (NEW)
+import { BedrockRuntimeClient, InvokeModelCommand } from "@aws-sdk/client-bedrock-runtime";
+
 // -----------------------------------------------------------------------------
 // ESM __dirname + load .env
 // -----------------------------------------------------------------------------
@@ -30,7 +33,10 @@ console.log(`OpenAI:   ${present("OPENAI_API_KEY")}`);
 console.log(`Mistral:  ${present("MISTRAL_API_KEY")}`);
 console.log(`Gemini:   ${present("GEMINI_API_KEY")}`);
 console.log(`Groq:     ${present("GROQ_API_KEY")}`);
-console.log(`DeepSeek:     ${present("DEEPSEEK_API_KEY")}`);
+console.log(`DeepSeek: ${present("DEEPSEEK_API_KEY")}`);
+
+// ✅ Bedrock env presence (NEW)
+console.log(`Bedrock:  ${present("AWS_ACCESS_KEY_ID")}/${present("AWS_SECRET_ACCESS_KEY")} (${process.env.AWS_REGION || "eu-west-1"})`);
 
 // -----------------------------------------------------------------------------
 // Health & root
@@ -39,7 +45,7 @@ app.get("/", (_req, res) => res.send("Ask-AI backend is running."));
 app.get("/health", (_req, res) => res.json({ ok: true }));
 
 // -----------------------------------------------------------------------------
-// Provider helpers (OpenAI, Mistral, Gemini, Groq)
+// Provider helpers
 // -----------------------------------------------------------------------------
 function mapFriendlyError(msg) {
   const s = String(msg || "");
@@ -48,6 +54,53 @@ function mapFriendlyError(msg) {
   if (/429|quota|rate|capacity/i.test(s)) return "Rate limit or quota exceeded.";
   if (/5\d\d|unavailable|timeout|timed out|ECONNRESET|ENETUNREACH/i.test(s)) return "Provider unavailable.";
   return `Unexpected error: ${s}`;
+}
+
+// ✅ Bedrock client (NEW)
+const bedrock =
+  process.env.AWS_ACCESS_KEY_ID && process.env.AWS_SECRET_ACCESS_KEY
+    ? new BedrockRuntimeClient({
+        region: process.env.AWS_REGION || "eu-west-1",
+        credentials: {
+          accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+          secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+        },
+      })
+    : null;
+
+// ✅ Bedrock Claude Sonnet invocation (NEW)
+// IMPORTANT: Set BEDROCK_CLAUDE_SONNET_MODEL_ID in Render to the exact model id enabled in eu-west-1.
+async function askBedrockClaudeSonnet(prompt) {
+  try {
+    if (!bedrock) {
+      return { provider: "Bedrock Claude Sonnet", text: "Bedrock placeholder response (no AWS credentials set)" };
+    }
+
+    const modelId =
+      process.env.BEDROCK_CLAUDE_SONNET_MODEL_ID || "anthropic.claude-3-sonnet-20240229-v1:0";
+
+    const body = {
+      anthropic_version: "bedrock-2023-05-31",
+      max_tokens: 700,
+      temperature: 0.4,
+      messages: [{ role: "user", content: prompt }],
+    };
+
+    const cmd = new InvokeModelCommand({
+      modelId,
+      contentType: "application/json",
+      accept: "application/json",
+      body: new TextEncoder().encode(JSON.stringify(body)),
+    });
+
+    const res = await bedrock.send(cmd);
+    const json = JSON.parse(new TextDecoder().decode(res.body));
+
+    const text = json?.content?.[0]?.text?.trim() ?? "No content returned.";
+    return { provider: "Bedrock Claude Sonnet", text };
+  } catch (e) {
+    return { provider: "Bedrock Claude Sonnet", text: mapFriendlyError(e?.message) };
+  }
 }
 
 async function askOpenAI(prompt) {
@@ -67,8 +120,7 @@ async function askOpenAI(prompt) {
       "No content returned.";
     return { provider: "OpenAI", text };
   } catch (e) {
-    const msg = e?.response?.data?.error?.message || e?.message || "Unknown error";
-    return { provider: "OpenAI", text: mapFriendlyError(msg) };
+    return { provider: "OpenAI", text: mapFriendlyError(e?.message) };
   }
 }
 
@@ -77,10 +129,9 @@ async function askMistral(prompt) {
     if (!process.env.MISTRAL_API_KEY) {
       return { provider: "Mistral", text: "Mistral placeholder response (no API key set)" };
     }
-    const model = process.env.MISTRAL_MODEL || "mistral-large-latest";
     const r = await axios.post(
       "https://api.mistral.ai/v1/chat/completions",
-      { model, messages: [{ role: "user", content: prompt }], temperature: 0.7 },
+      { model: "mistral-large-latest", messages: [{ role: "user", content: prompt }] },
       { headers: { Authorization: `Bearer ${process.env.MISTRAL_API_KEY}` }, timeout: 20000 }
     );
     const text =
@@ -89,8 +140,7 @@ async function askMistral(prompt) {
       "No content returned.";
     return { provider: "Mistral", text };
   } catch (e) {
-    const msg = e?.response?.data?.error?.message || e?.response?.data?.message || e?.message || "Unknown error";
-    return { provider: "Mistral", text: mapFriendlyError(msg) };
+    return { provider: "Mistral", text: mapFriendlyError(e?.message) };
   }
 }
 
@@ -99,52 +149,30 @@ async function askGroq(prompt) {
     if (!process.env.GROQ_API_KEY) {
       return { provider: "Groq", text: "Groq placeholder response (no API key set)" };
     }
-    // Avoid decommissioned defaults; try a small fallback list if needed.
-    let model = process.env.GROQ_MODEL || "llama-3.3-70b-versatile";
-    const headers = { Authorization: `Bearer ${process.env.GROQ_API_KEY}` };
-    const body = (mdl) => ({ model: mdl, messages: [{ role: "user", content: prompt }], temperature: 0.7 });
-
-    try {
-      const r = await axios.post("https://api.groq.com/openai/v1/chat/completions", body(model), { headers, timeout: 20000 });
-      const text =
-        r.data?.choices?.[0]?.message?.content?.trim() ??
-        r.data?.choices?.[0]?.text?.trim() ??
-        "No content returned.";
-      return { provider: "Groq", text };
-    } catch (inner) {
-      const msg = inner?.response?.data?.error?.message || "";
-      const decommissioned = /decommissioned|not supported|model[_\s-]?decommissioned/i.test(msg);
-      if (decommissioned) {
-        const fallbacks = ["llama-3.3-70b-versatile", "mistral-saba-24b"];
-        for (const fb of fallbacks) {
-          if (fb === model) continue;
-          try {
-            const r2 = await axios.post("https://api.groq.com/openai/v1/chat/completions", body(fb), { headers, timeout: 20000 });
-            const text =
-              r2.data?.choices?.[0]?.message?.content?.trim() ??
-              r2.data?.choices?.[0]?.text?.trim() ??
-              "No content returned.";
-            return { provider: "Groq", text };
-          } catch { /* try next */ }
-        }
-      }
-      throw inner;
-    }
+    const r = await axios.post(
+      "https://api.groq.com/openai/v1/chat/completions",
+      { model: "llama-3.3-70b-versatile", messages: [{ role: "user", content: prompt }] },
+      { headers: { Authorization: `Bearer ${process.env.GROQ_API_KEY}` }, timeout: 20000 }
+    );
+    const text =
+      r.data?.choices?.[0]?.message?.content?.trim() ??
+      r.data?.choices?.[0]?.text?.trim() ??
+      "No content returned.";
+    return { provider: "Groq", text };
   } catch (e) {
-    const msg = e?.response?.data?.error?.message || e?.message || "Unknown error";
-    return { provider: "Groq", text: mapFriendlyError(msg) };
+    return { provider: "Groq", text: mapFriendlyError(e?.message) };
   }
 }
 
+/* ✅ FIXED HERE */
 async function askDeepSeek(prompt) {
   try {
     if (!process.env.DEEPSEEK_API_KEY) {
       return { provider: "DeepSeek", text: "DeepSeek placeholder response (no API key set)" };
     }
-    const model = process.env.DEEPSEEK_MODEL || "deepseek-chat";
     const r = await axios.post(
       "https://api.deepseek.com/v1/chat/completions",
-      { model, messages: [{ role: "user", content: prompt }], temperature: 0.7 },
+      { model: "deepseek-chat", messages: [{ role: "user", content: prompt }] },
       { headers: { Authorization: `Bearer ${process.env.DEEPSEEK_API_KEY}` }, timeout: 20000 }
     );
     const text =
@@ -153,8 +181,7 @@ async function askDeepSeek(prompt) {
       "No content returned.";
     return { provider: "DeepSeek", text };
   } catch (e) {
-    const msg = e?.response?.data?.error?.message || e?.message || "Unknown error";
-    return { provider: "DeepSeek", text: mapFriendlyError(msg) };
+    return { provider: "DeepSeek", text: mapFriendlyError(e?.message) };
   }
 }
 
@@ -163,146 +190,54 @@ async function askGemini(prompt) {
     if (!process.env.GEMINI_API_KEY) {
       return { provider: "Gemini", text: "Gemini placeholder response (no API key set)" };
     }
-    const model = process.env.GEMINI_MODEL || "gemini-1.5-flash";
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`;
     const r = await axios.post(
-      url,
+      "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent",
       { contents: [{ parts: [{ text: prompt }] }] },
       { headers: { "x-goog-api-key": process.env.GEMINI_API_KEY }, timeout: 20000 }
     );
     const text = r.data?.candidates?.[0]?.content?.parts?.[0]?.text?.trim() ?? "No content returned.";
     return { provider: "Gemini", text };
   } catch (e) {
-    const msg = e?.response?.data?.error?.message || e?.response?.data?.message || e?.message || "Unknown error";
-    return { provider: "Gemini", text: mapFriendlyError(msg) };
+    return { provider: "Gemini", text: mapFriendlyError(e?.message) };
   }
 }
 
 // -----------------------------------------------------------------------------
-// AI Directory loader — *only* read data/ai-directory.json (no legacy server.json)
-// -----------------------------------------------------------------------------
-const DIRECTORY_PATH = path.join(__dirname, "data", "ai-directory.json");
-
-let DIRECTORY = [];
-let DIRECTORY_LAST_ERROR = null;
-let DIRECTORY_LAST_LOADED_AT = null;
-
-function normStr(x) { return (x ?? "").toString().trim(); }
-function normArr(a) { return Array.isArray(a) ? a.filter(Boolean).map((v) => String(v).trim()) : []; }
-
-function normCompany(c = {}) {
-  return {
-    name:      normStr(c.name),
-    category:  normStr(c.category),
-    summary:   normStr(c.summary),
-    website:   normStr(c.website),
-    use_cases: normArr(c.use_cases),
-    logo:      c.logo ? String(c.logo) : null,
-  };
-}
-
-function validateDirectory(items) {
-  if (!Array.isArray(items)) throw new Error("ai-directory.json must be a JSON array");
-  // light sanity check: entries must at least have a name
-  for (let i = 0; i < items.length; i++) {
-    if (!items[i] || typeof items[i] !== "object") throw new Error(`Entry #${i} is not an object`);
-    if (!items[i].name) throw new Error(`Entry #${i} missing "name"`);
-  }
-}
-
-async function loadDirectoryOnce() {
-  try {
-    const raw = await fs.readFile(DIRECTORY_PATH, "utf-8");
-    // Ensure we are not accidentally parsing a JS file
-    if (/^\s*import\s|^\s*export\s/m.test(raw)) {
-      throw new Error("ai-directory.json looks like JavaScript, not JSON");
-    }
-    const parsed = JSON.parse(raw);
-    const items = Array.isArray(parsed) ? parsed : (Array.isArray(parsed.items) ? parsed.items : []);
-    validateDirectory(items);
-    DIRECTORY = items.map(normCompany);
-    DIRECTORY_LAST_ERROR = null;
-    DIRECTORY_LAST_LOADED_AT = new Date().toISOString();
-    console.log(`AI Directory loaded: ${DIRECTORY.length} items`);
-  } catch (e) {
-    DIRECTORY = [];
-    DIRECTORY_LAST_ERROR = String(e?.message || e);
-    DIRECTORY_LAST_LOADED_AT = new Date().toISOString();
-    console.warn("AI Directory not loaded:", DIRECTORY_LAST_ERROR);
-  }
-}
-
-// Initial load on boot
-await loadDirectoryOnce();
-
-// -----------------------------------------------------------------------------
-// Directory routes (+ hot reload + status)
-// -----------------------------------------------------------------------------
-app.get("/ai-directory", (_req, res) => {
-  res.json({ ok: true, count: DIRECTORY.length, items: DIRECTORY });
-});
-
-app.get("/ai-directory/search", (req, res) => {
-  const q = (req.query.q ?? "").toString().trim().toLowerCase();
-  if (!q) return res.json({ ok: true, count: DIRECTORY.length, items: DIRECTORY });
-  const match = (s) => s && s.toLowerCase().includes(q);
-  const filtered = DIRECTORY.filter((c) =>
-    match(c.name) ||
-    match(c.category) ||
-    match(c.summary) ||
-    match(c.website) ||
-    (Array.isArray(c.use_cases) && c.use_cases.some(match))
-  );
-  res.json({ ok: true, count: filtered.length, items: filtered });
-});
-
-app.post("/ai-directory/reload", async (_req, res) => {
-  await loadDirectoryOnce();
-  res.json({
-    ok: DIRECTORY_LAST_ERROR == null,
-    count: DIRECTORY.length,
-    error: DIRECTORY_LAST_ERROR,
-    reloaded_at: DIRECTORY_LAST_LOADED_AT,
-  });
-});
-
-app.get("/ai-directory/status", (_req, res) => {
-  res.json({
-    ok: DIRECTORY_LAST_ERROR == null,
-    count: DIRECTORY.length,
-    error: DIRECTORY_LAST_ERROR,
-    last_loaded_at: DIRECTORY_LAST_LOADED_AT,
-    path: DIRECTORY_PATH,
-  });
-});
-
-// -----------------------------------------------------------------------------
-// Unified /ask route (Android expects { prompt, answers })
+// Ask route
 // -----------------------------------------------------------------------------
 app.post("/ask", async (req, res) => {
-  const prompt = String(req.body?.prompt ?? "").trim().slice(0, 2000);
-  const jobs = [
-    ["OpenAI",  () => askOpenAI(prompt)],
-    ["Mistral", () => askMistral(prompt)],
-    ["Groq",    () => askGroq(prompt)],
-    ["DeepSeek",    () => askDeepSeek(prompt)],
-    ["Gemini",  () => askGemini(prompt)],
-    
-  ];
-  const settled = await Promise.allSettled(jobs.map(([_, fn]) => fn()));
-  const answers = settled.map((r, i) => {
-    const provider = jobs[i][0];
-    if (r.status === "fulfilled") return r.value;
-    return { provider, text: mapFriendlyError(r.reason || "Unknown error") };
-  });
-  res.json({ prompt, answers });
-});
+  const prompt = String(req.body?.prompt ?? "").trim();
 
-// -----------------------------------------------------------------------------
-// 404 handler (helpful for debugging wrong paths)
-// -----------------------------------------------------------------------------
-app.use((req, res) => {
-  res.status(404).json({ ok: false, error: "Not found", path: req.path });
+  // ✅ Optional provider selection support (NEW)
+  // If UI sends { providers: ["OpenAI","Groq","bedrock_claude_sonnet"] } we only run those.
+  const providers = Array.isArray(req.body?.providers) ? req.body.providers : null;
+
+  const jobsByKey = {
+    OpenAI: () => askOpenAI(prompt),
+    Mistral: () => askMistral(prompt),
+    Groq: () => askGroq(prompt),
+    DeepSeek: () => askDeepSeek(prompt),
+    Gemini: () => askGemini(prompt),
+
+    // ✅ Bedrock provider key expected from Lovable toggle:
+    bedrock_claude_sonnet: () => askBedrockClaudeSonnet(prompt),
+  };
+
+  const keysToRun = providers?.length
+    ? providers.filter((k) => Object.prototype.hasOwnProperty.call(jobsByKey, k))
+    : Object.keys(jobsByKey);
+
+  const results = await Promise.all(
+    keysToRun.map(async (k) => {
+      try {
+        return await jobsByKey[k]();
+      } catch (e) {
+        return { provider: String(k), text: mapFriendlyError(e?.message) };
+      }
+    })
+  );
+
+  res.json({ prompt, answers: results });
 });
 
 // -----------------------------------------------------------------------------
@@ -311,20 +246,4 @@ app.use((req, res) => {
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`✅ Ask-AI backend running on http://localhost:${PORT}`);
-  console.log("Routes: /, /health, /ai-directory, /ai-directory/search, /ai-directory/reload, /ai-directory/status, /ask");
 });
-
-/*
-Sample data/ai-directory.json to get you started:
-
-[
-  {
-    "name": "OpenAI GPT-4o Mini",
-    "category": "General",
-    "summary": "Lightweight, fast reasoning model.",
-    "website": "https://platform.openai.com",
-    "use_cases": ["chat", "summarization", "Q&A"],
-    "logo": null
-  }
-]
-*/
