@@ -6,8 +6,8 @@ import dotenv from "dotenv";
 import path from "path";
 import { fileURLToPath } from "url";
 
-// ✅ Bedrock Runtime SDK
-import { BedrockRuntimeClient, InvokeModelCommand } from "@aws-sdk/client-bedrock-runtime";
+// ✅ Bedrock Runtime SDK (updated to use Converse)
+import { BedrockRuntimeClient, ConverseCommand } from "@aws-sdk/client-bedrock-runtime";
 
 // -----------------------------------------------------------------------------
 // ESM __dirname + load .env
@@ -77,9 +77,9 @@ const bedrock =
     : null;
 
 // -----------------------------------------------------------------------------
-// ✅ Bedrock generic invoke helper (targeted addition)
+// ✅ Bedrock generic converse helper (updated to use Converse API)
 // -----------------------------------------------------------------------------
-async function invokeBedrockModel({ modelId, body, providerLabel }) {
+async function bedrockConverse({ modelId, prompt, providerLabel }) {
   try {
     if (!bedrock) {
       return { provider: providerLabel, text: "Bedrock not configured (missing AWS credentials)." };
@@ -88,116 +88,55 @@ async function invokeBedrockModel({ modelId, body, providerLabel }) {
       return { provider: providerLabel, text: "Bedrock modelId not configured (missing env var)." };
     }
 
-    const cmd = new InvokeModelCommand({
+    const cmd = new ConverseCommand({
       modelId,
-      contentType: "application/json",
-      accept: "application/json",
-      body: new TextEncoder().encode(JSON.stringify(body)),
+      messages: [
+        { role: "user", content: [{ text: prompt }] }
+      ],
+      inferenceConfig: {
+        maxTokens: 700,
+        temperature: 0.4
+      }
     });
 
     const res = await bedrock.send(cmd);
-    const json = JSON.parse(new TextDecoder().decode(res.body));
 
-    return { provider: providerLabel, text: extractBedrockText(json) };
+    const text =
+      res?.output?.message?.content?.[0]?.text?.trim?.() ||
+      "No content returned.";
+
+    return { provider: providerLabel, text };
   } catch (e) {
-    console.error("BEDROCK_INVOKE_ERROR", providerLabel, e);
+    console.error("BEDROCK_CONVERSE_ERROR", providerLabel, e);
     return { provider: providerLabel, text: mapFriendlyError(e?.message) };
   }
 }
 
-// Extract text from a few common Bedrock response shapes (kept small + safe)
-function extractBedrockText(json) {
-  // Anthropic Claude (messages API)
-  const claude = json?.content?.[0]?.text?.trim();
-  if (claude) return claude;
-
-  // Some models return outputText or results arrays
-  const out1 = json?.outputText?.trim?.();
-  if (out1) return out1;
-
-  const out2 = json?.results?.[0]?.outputText?.trim?.();
-  if (out2) return out2;
-
-  // Fallback
-  return "No content returned.";
-}
-
 // -----------------------------------------------------------------------------
-// ✅ Bedrock Claude Sonnet (existing, now via generic helper)
+// ✅ Bedrock Claude Sonnet (using Converse API)
 // -----------------------------------------------------------------------------
 async function askBedrockClaudeSonnet(prompt) {
   const modelId =
     process.env.BEDROCK_CLAUDE_SONNET_MODEL_ID || "anthropic.claude-3-sonnet-20240229-v1:0";
 
-  const body = {
-    anthropic_version: "bedrock-2023-05-31",
-    max_tokens: 700,
-    temperature: 0.4,
-    messages: [{ role: "user", content: prompt }],
-  };
-
-  return invokeBedrockModel({
+  return bedrockConverse({
     modelId,
-    body,
-    providerLabel: "Bedrock Claude Sonnet",
+    prompt,
+    providerLabel: "Claude Sonnet",
   });
 }
 
 // -----------------------------------------------------------------------------
-// ✅ Bedrock Llama 3.2 3B (NEW)
+// ✅ Bedrock Nova Micro (NEW, using Converse API)
 // -----------------------------------------------------------------------------
-async function askBedrockLlama32_3B(prompt) {
-  const modelId = process.env.BEDROCK_LLAMA_3_2_3B_MODEL_ID; // meta.llama3-2-3b-instruct-v1:0
+async function askBedrockNovaMicro(prompt) {
+  const modelId =
+    process.env.BEDROCK_NOVA_MICRO_MODEL_ID || "amazon.nova-micro-v1:0";
 
-  // Minimal, broadly compatible prompt wrapper
-  const body = {
-    prompt,
-    max_gen_len: 700,
-    temperature: 0.4,
-  };
-
-  return invokeBedrockModel({
+  return bedrockConverse({
     modelId,
-    body,
-    providerLabel: "Bedrock Llama 3.2 3B",
-  });
-}
-
-// -----------------------------------------------------------------------------
-// ✅ Bedrock Gemma 3 4B IT (NEW)
-// -----------------------------------------------------------------------------
-async function askBedrockGemma3_4B(prompt) {
-  const modelId = process.env.BEDROCK_GEMMA_3_4B_MODEL_ID; // google.gemma-3-4b-it
-
-  const body = {
     prompt,
-    max_tokens: 700,
-    temperature: 0.4,
-  };
-
-  return invokeBedrockModel({
-    modelId,
-    body,
-    providerLabel: "Bedrock Gemma 3 4B",
-  });
-}
-
-// -----------------------------------------------------------------------------
-// ✅ Bedrock Amazon Nova Lite (NEW)
-// -----------------------------------------------------------------------------
-async function askBedrockNovaLite(prompt) {
-  const modelId = process.env.BEDROCK_NOVA_LITE_MODEL_ID; // amazon.nova-lite-v1:0
-
-  const body = {
-    prompt,
-    max_tokens: 700,
-    temperature: 0.4,
-  };
-
-  return invokeBedrockModel({
-    modelId,
-    body,
-    providerLabel: "Bedrock Nova Lite",
+    providerLabel: "Amazon Nova",
   });
 }
 
@@ -305,48 +244,28 @@ async function askGemini(prompt) {
 }
 
 // -----------------------------------------------------------------------------
-// ✅ Providers endpoint (NEW, targeted)
+// ✅ Providers endpoint (updated for locked 5-model plan)
 // -----------------------------------------------------------------------------
 app.get("/providers", (_req, res) => {
   const providers = [
-    // Standalone (keep enabled/disabled logic simple + env-driven)
     { id: "mistral", name: "Mistral", enabled: !!process.env.MISTRAL_API_KEY, comingSoon: !process.env.MISTRAL_API_KEY, group: "Standalone" },
     { id: "groq", name: "Groq", enabled: !!process.env.GROQ_API_KEY, comingSoon: !process.env.GROQ_API_KEY, group: "Standalone" },
+    { id: "gemini", name: "Google (Gemini)", enabled: !!process.env.GEMINI_API_KEY, comingSoon: !process.env.GEMINI_API_KEY, group: "Standalone" },
 
-    // Bedrock (enabled only if AWS creds + model id present)
     {
       id: "bedrock_claude_sonnet",
-      name: "Claude Sonnet (Bedrock)",
-      enabled: !!bedrock && !!(process.env.BEDROCK_CLAUDE_SONNET_MODEL_ID || "anthropic.claude-3-sonnet-20240229-v1:0"),
-      comingSoon: !(!!bedrock),
+      name: "Claude Sonnet",
+      enabled: !!bedrock,
+      comingSoon: !bedrock,
       group: "Bedrock",
     },
     {
-      id: "bedrock_llama_3_2_3b",
-      name: "Llama 3.2 3B (Bedrock)",
-      enabled: !!bedrock && !!process.env.BEDROCK_LLAMA_3_2_3B_MODEL_ID,
-      comingSoon: !(!!bedrock && !!process.env.BEDROCK_LLAMA_3_2_3B_MODEL_ID),
+      id: "bedrock_nova_micro",
+      name: "Amazon Nova",
+      enabled: !!bedrock,
+      comingSoon: !bedrock,
       group: "Bedrock",
     },
-    {
-      id: "bedrock_gemma_3_4b",
-      name: "Gemma 3 4B (Bedrock)",
-      enabled: !!bedrock && !!process.env.BEDROCK_GEMMA_3_4B_MODEL_ID,
-      comingSoon: !(!!bedrock && !!process.env.BEDROCK_GEMMA_3_4B_MODEL_ID),
-      group: "Bedrock",
-    },
-    {
-      id: "bedrock_nova_lite",
-      name: "Nova Lite (Bedrock)",
-      enabled: !!bedrock && !!process.env.BEDROCK_NOVA_LITE_MODEL_ID,
-      comingSoon: !(!!bedrock && !!process.env.BEDROCK_NOVA_LITE_MODEL_ID),
-      group: "Bedrock",
-    },
-
-    // Keep these as coming soon (optional) – they exist but not part of the "six" plan
-    { id: "openai", name: "OpenAI", enabled: !!process.env.OPENAI_API_KEY, comingSoon: !process.env.OPENAI_API_KEY, group: "Standalone" },
-    { id: "gemini", name: "Gemini", enabled: !!process.env.GEMINI_API_KEY, comingSoon: !process.env.GEMINI_API_KEY, group: "Standalone" },
-    { id: "deepseek", name: "DeepSeek", enabled: !!process.env.DEEPSEEK_API_KEY, comingSoon: !process.env.DEEPSEEK_API_KEY, group: "Standalone" },
   ];
 
   res.json({ providers });
@@ -364,17 +283,12 @@ app.post("/ask", async (req, res) => {
 
   // ✅ Canonical lowercase keys (targeted fix for Lovable)
   const jobsByKey = {
-    openai: () => askOpenAI(prompt),
     mistral: () => askMistral(prompt),
     groq: () => askGroq(prompt),
-    deepseek: () => askDeepSeek(prompt),
     gemini: () => askGemini(prompt),
 
-    // ✅ Bedrock providers (six-model plan)
     bedrock_claude_sonnet: () => askBedrockClaudeSonnet(prompt),
-    bedrock_llama_3_2_3b: () => askBedrockLlama32_3B(prompt),
-    bedrock_gemma_3_4b: () => askBedrockGemma3_4B(prompt),
-    bedrock_nova_lite: () => askBedrockNovaLite(prompt),
+    bedrock_nova_micro: () => askBedrockNovaMicro(prompt),
   };
 
   const keysToRun = requested?.length
