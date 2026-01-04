@@ -230,13 +230,22 @@ async function askGemini(prompt) {
     if (!process.env.GEMINI_API_KEY) {
       return { provider: "Gemini", text: "Gemini placeholder response (no API key set)" };
     }
+
+    // Try these in order if needed:
+    // const model = process.env.GEMINI_MODEL || "gemini-1.5-flash-latest";
     const model = process.env.GEMINI_MODEL || "gemini-1.5-flash";
+
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${process.env.GEMINI_API_KEY}`;
+
     const r = await axios.post(
-      `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`,
+      url,
       { contents: [{ parts: [{ text: prompt }] }] },
-      { headers: { "x-goog-api-key": process.env.GEMINI_API_KEY }, timeout: 20000 }
+      { headers: { "Content-Type": "application/json" }, timeout: 20000 }
     );
-    const text = r.data?.candidates?.[0]?.content?.parts?.[0]?.text?.trim() ?? "No content returned.";
+
+    const text =
+      r.data?.candidates?.[0]?.content?.parts?.[0]?.text?.trim() ?? "No content returned.";
+
     return { provider: "Gemini", text };
   } catch (e) {
     return { provider: "Gemini", text: mapFriendlyError(e?.message) };
