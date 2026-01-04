@@ -127,11 +127,11 @@ async function askBedrockClaudeSonnet(prompt) {
 }
 
 // -----------------------------------------------------------------------------
-// ✅ Bedrock Nova Micro (NEW, using Converse API)
+// ✅ Bedrock Nova Lite (NEW, using Converse API)
 // -----------------------------------------------------------------------------
-async function askBedrockNovaMicro(prompt) {
+async function askBedrockNovaLite(prompt) {
   const modelId =
-    process.env.BEDROCK_NOVA_MICRO_MODEL_ID || "amazon.nova-micro-v1:0";
+    process.env.BEDROCK_NOVA_LITE_MODEL_ID || "amazon.nova-lite-v1:0";
 
   return bedrockConverse({
     modelId,
@@ -244,26 +244,31 @@ async function askGemini(prompt) {
 }
 
 // -----------------------------------------------------------------------------
-// ✅ Providers endpoint (updated for locked 5-model plan)
+// ✅ Providers endpoint (updated for 7-model configuration)
 // -----------------------------------------------------------------------------
 app.get("/providers", (_req, res) => {
   const providers = [
     { id: "mistral", name: "Mistral", enabled: !!process.env.MISTRAL_API_KEY, comingSoon: !process.env.MISTRAL_API_KEY, group: "Standalone" },
     { id: "groq", name: "Groq", enabled: !!process.env.GROQ_API_KEY, comingSoon: !process.env.GROQ_API_KEY, group: "Standalone" },
+
+    { id: "deepseek", name: "DeepSeek", enabled: !!process.env.DEEPSEEK_API_KEY, comingSoon: !process.env.DEEPSEEK_API_KEY, group: "Standalone" },
+    { id: "openai", name: "OpenAI", enabled: !!process.env.OPENAI_API_KEY, comingSoon: !process.env.OPENAI_API_KEY, group: "Standalone" },
+
     { id: "gemini", name: "Google (Gemini)", enabled: !!process.env.GEMINI_API_KEY, comingSoon: !process.env.GEMINI_API_KEY, group: "Standalone" },
 
+    // Optional: keep Bedrock visible for testing, but only "enabled" when fully configured
     {
       id: "bedrock_claude_sonnet",
       name: "Claude Sonnet",
-      enabled: !!bedrock,
-      comingSoon: !bedrock,
+      enabled: !!bedrock && !!process.env.BEDROCK_CLAUDE_SONNET_MODEL_ID,
+      comingSoon: !(!!bedrock && !!process.env.BEDROCK_CLAUDE_SONNET_MODEL_ID),
       group: "Bedrock",
     },
     {
-      id: "bedrock_nova_micro",
+      id: "bedrock_nova_lite",
       name: "Amazon Nova",
-      enabled: !!bedrock,
-      comingSoon: !bedrock,
+      enabled: !!bedrock && !!process.env.BEDROCK_NOVA_LITE_MODEL_ID,
+      comingSoon: !(!!bedrock && !!process.env.BEDROCK_NOVA_LITE_MODEL_ID),
       group: "Bedrock",
     },
   ];
@@ -285,10 +290,15 @@ app.post("/ask", async (req, res) => {
   const jobsByKey = {
     mistral: () => askMistral(prompt),
     groq: () => askGroq(prompt),
+
+    deepseek: () => askDeepSeek(prompt),
+    openai: () => askOpenAI(prompt),
+
     gemini: () => askGemini(prompt),
 
+    // Optional (only if you still want Bedrock visible during testing)
     bedrock_claude_sonnet: () => askBedrockClaudeSonnet(prompt),
-    bedrock_nova_micro: () => askBedrockNovaMicro(prompt),
+    bedrock_nova_lite: () => askBedrockNovaLite(prompt),
   };
 
   const keysToRun = requested?.length
